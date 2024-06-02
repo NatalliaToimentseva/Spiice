@@ -2,4 +2,14 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="main">#9378FF</color>
+    <color name="text">#120E21</color>
+    <color name="background">#FAF9FE</color>
+    <color name="background_input_field">#FBEEFF</color>
+    <color name="text_input_field">#99879D</color>
+    <color name="bubble1">#A899E4</color>
+    <color name="bubble2">#EDEAFA</color>
+    <color name="bubble3">#AFA8CB</color>
+    <color name="bubble4">#D8D3EB</color>
+    <color name="bubble5">#C0B5EC</color>
 </resources>
