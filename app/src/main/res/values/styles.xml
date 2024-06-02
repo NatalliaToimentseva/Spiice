@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SplashTitleStyle">
+        <item name="android:fontFamily">@font/red_hat_display</item>
+        <item name="android:letterSpacing">@dimen/letter_spacing_splash_screen_title</item>
+        <item name="android:lineHeight">@dimen/line_height_splash_screen_title</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:textFontWeight">500</item>
+        <item name="android:textSize">@dimen/text_size_splash_screen_title</item>
+    </style>
+
+    <style name="ButtonStyle">
+        <item name="android:layout_width">@dimen/button_wight</item>
+        <item name="android:padding">@dimen/button_padding</item>
+        <item name="android:fontFamily">@font/public_sans_medium</item>
+        <item name="android:lineHeight">@dimen/line_height_button</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textFontWeight">500</item>
+        <item name="android:textSize">@dimen/text_size</item>
+    </style>
+
+    <style name="BackToLogInButtonStyle">
+        <item name="android:fontFamily">@font/public_sans</item>
+        <item name="android:lineHeight">@dimen/line_height_button</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:textFontWeight">400</item>
+        <item name="android:textSize">@dimen/text_size</item>
+    </style>
+
+    <style name="TitleStyle">
+        <item name="android:fontFamily">@font/red_hat_display</item>
+        <item name="android:lineHeight">@dimen/line_height_title</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:textFontWeight">500</item>
+        <item name="android:textSize">@dimen/text_size_title</item>
+    </style>
+
+    <style name="InputFieldStyle">
+        <item name="android:layout_width">@dimen/input_field_wight</item>
+        <item name="android:layout_height">@dimen/input_field_height</item>
+        <item name="android:background">@drawable/bg_input_field</item>
+        <item name="android:fontFamily">@font/public_sans_medium</item>
+        <item name="android:lineHeight">@dimen/line_height_text</item>
+        <item name="android:textColor">@color/text_input_field</item>
+        <item name="android:textFontWeight">400</item>
+        <item name="android:textSize">@dimen/text_size</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="TextInputLayoutStyle">
+        <item name="android:layout_width">@dimen/input_field_wight</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/input_field_marginTop</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColorHint">@color/text_input_field</item>
+    </style>
+</resources>

@@ -2,8 +2,10 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Spiice" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/main</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowActionBar">false</item>
     </style>
 
-    <style name="Theme.Spiice" parent="Base.Theme.Spiice" />
+    <style name="Theme.Spiice" parent="Base.Theme.Spiice"/>
 </resources>

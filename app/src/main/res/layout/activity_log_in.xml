@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bubbles_log_in_background"
+    tools:context=".SignUpActivity">
+
+    <TextView
+        android:id="@+id/title_log_in"
+        android:layout_width="@dimen/secondary_title_wight"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/secondary_title_marginTop"
+        android:text="@string/log_in_screen_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/TitleStyle"/>
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="@dimen/barrier_size"
+        android:layout_height="@dimen/barrier_size"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="title_log_in"/>
+
+    <Space
+        android:id="@+id/space"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_height"
+        app:layout_constraintTop_toBottomOf="@+id/barrier"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email_log_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/space"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
+        style="@style/TextInputLayoutStyle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_log"
+            android:hint="@string/email_field"
+            android:inputType="textEmailAddress"
+            style="@style/InputFieldStyle"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password_log_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_log_layout"
+        app:passwordToggleEnabled="true"
+        app:errorEnabled="true"
+        style="@style/TextInputLayoutStyle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_log"
+            android:hint="@string/password_field"
+            android:inputType="textPassword"
+            app:endIconDrawable="@drawable/ic_eye"
+            style="@style/InputFieldStyle"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/log_in_button"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/login_button_marginTop"
+        android:text="@string/log_in_screen_button"
+        android:enabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_log_layout"
+        style="@style/ButtonStyle"/>
+
+    <TextView
+        android:id="@+id/sing_up_from_login_screen_button"
+        style="@style/BackToLogInButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/account_back_marginTop"
+        android:text="@string/return_to_sign_up_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/log_in_button" />
+</androidx.constraintlayout.widget.ConstraintLayout>

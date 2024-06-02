@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bubbles_sing_up_background"
+    tools:context=".SignUpActivity">
+
+    <TextView
+        android:id="@+id/title_sing_up"
+        android:layout_width="@dimen/secondary_title_wight"
+        android:layout_height="@dimen/sing_up_title_height"
+        android:layout_marginTop="@dimen/secondary_title_marginTop"
+        android:text="@string/sign_up_screen_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/TitleStyle"/>
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="@dimen/barrier_size"
+        android:layout_height="@dimen/barrier_size"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="title_sing_up"/>
+
+    <Space
+        android:id="@+id/space"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_height"
+        app:layout_constraintTop_toBottomOf="@+id/barrier"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/first_name_sing_up_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/space"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
+        style="@style/TextInputLayoutStyle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/first_name_sing_up"
+            android:hint="@string/first_name_field"
+            style="@style/InputFieldStyle"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/last_name_sing_up_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/first_name_sing_up_layout"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
+        style="@style/TextInputLayoutStyle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/last_name_sing_up"
+            android:hint="@string/last_name_field"
+            style="@style/InputFieldStyle"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email_sing_up_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/last_name_sing_up_layout"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
+        style="@style/TextInputLayoutStyle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_sing_up"
+            android:hint="@string/email_field"
+            android:inputType="textEmailAddress"
+            style="@style/InputFieldStyle"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password_sing_up_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_sing_up_layout"
+        app:passwordToggleEnabled="true"
+        app:errorEnabled="true"
+        style="@style/TextInputLayoutStyle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_sing_up"
+            android:hint="@string/password_field"
+            android:inputType="textPassword"
+            app:endIconDrawable="@drawable/ic_eye"
+            style="@style/InputFieldStyle"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/sing_up_button"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sing_up_button_marginTop"
+        android:text="@string/sign_up_button"
+        android:enabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_sing_up_layout"
+        style="@style/ButtonStyle"/>
+
+    <TextView
+        android:id="@+id/login_from_sing_up_screen_button"
+        style="@style/BackToLogInButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/account_back_marginTop"
+        android:text="@string/back_to_log_in"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sing_up_button"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
