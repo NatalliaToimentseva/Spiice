@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Spiice</string>
+    <string name="splash_screen_sing_up_button">Discover the platform</string>
+    <string name="splash_screen_log_in_button">You have an account ? Log-in</string>
+    <string name="log_in_screen_title">Log-in</string>
+    <string name="log_in_screen_button">Log-in</string>
+    <string name="return_to_sign_up_button">Return to Sign-up</string>
+    <string name="sign_up_screen_title">Sign-up</string>
+    <string name="first_name_field">First name</string>
+    <string name="last_name_field">Last name</string>
+    <string name="email_field">Email</string>
+    <string name="password_field">Password</string>
+    <string name="sign_up_button">Sign-up</string>
+    <string name="back_to_log_in">You have an account ? Log-in</string>
+    <string name="error_message_login">Field is required!</string>
+    <string name="error_message_name">Length must be from 3 to 255</string>
+    <string name="error_message_email">Invalid email!</string>
+    <string name="error_message_password">length must be from 6 to 50, at least one capital and small letter, number, sign</string>
 </resources>
