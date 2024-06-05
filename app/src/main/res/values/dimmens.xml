@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="line_height_splash_screen_title">127.01dp</dimen>
-    <dimen name="line_height_title">35.72dp</dimen>
-    <dimen name="line_height_button">21.15dp</dimen>
-    <dimen name="line_height_text">18.8dp</dimen>
-    <dimen name="letter_spacing_splash_screen_title">-0.04</dimen>
     <dimen name="text_size_splash_screen_title">96sp</dimen>
     <dimen name="text_size_title">27sp</dimen>
     <dimen name="text_size">18sp</dimen>
@@ -15,7 +10,6 @@
     <dimen name="input_field_marginTop">5dp</dimen>
     <dimen name="input_field_side_padding">16dp</dimen>
     <dimen name="input_field_paddingTop">17dp</dimen>
-    <dimen name="splash_title_wight">244dp</dimen>
     <dimen name="splash_title_height">127dp</dimen>
     <dimen name="splash_title_marginTop">218dp</dimen>
     <dimen name="splash_button_marginTop">250dp</dimen>

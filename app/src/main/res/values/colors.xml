@@ -3,6 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="main">#9378FF</color>
+    <color name="buttonDisabled">#949378FF</color>
     <color name="text">#120E21</color>
     <color name="background">#FAF9FE</color>
     <color name="background_input_field">#FBEEFF</color>

@@ -10,33 +10,34 @@
 
     <TextView
         android:id="@+id/splash_screen_text"
-        android:layout_width="@dimen/splash_title_wight"
+        style="@style/TextViewFontsStyle.TitleFontStyle.SplashTitleStyle"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/splash_title_height"
         android:layout_marginTop="@dimen/splash_title_marginTop"
         android:text="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/SplashTitleStyle"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/splash_screen_sing_up_button"
+        style="@style/ButtonStyle"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/splash_button_marginTop"
         android:text="@string/splash_screen_sing_up_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/splash_screen_text"
-        style="@style/ButtonStyle"/>
+        app:layout_constraintTop_toBottomOf="@+id/splash_screen_text" />
 
     <TextView
         android:id="@+id/login_from_splash_screen_button"
-        style="@style/BackToLogInButtonStyle"
+        style="@style/TextViewFontsStyle.BackToLogInButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/account_back_marginTop"
         android:text="@string/splash_screen_log_in_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/splash_screen_sing_up_button"/>
+        app:layout_constraintTop_toBottomOf="@+id/splash_screen_sing_up_button" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,7 @@ import android.text.SpannableString
 import android.text.style.StyleSpan
 import android.widget.TextView
 
-fun createSpanForView (textView: TextView) {
+fun createSpanForView(textView: TextView) {
     val textForSpan = textView.text.toString()
     val spannable = SpannableString(textForSpan)
 
