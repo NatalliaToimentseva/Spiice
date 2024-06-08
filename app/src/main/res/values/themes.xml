@@ -4,8 +4,22 @@
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/main</item>
         <item name="android:windowFullscreen">true</item>
-        <item name="windowActionBar">false</item>
+        <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
+
+        <item name="android:actionMenuTextAppearance">@style/ToolbarStyle</item>
+        <item name="actionMenuTextColor">@color/text_input_field</item>
+        <item name="actionMenuTextAppearance">@style/ToolbarTextStyle</item>
+
     </style>
 
     <style name="Theme.Spiice" parent="Base.Theme.Spiice"/>
+
+    <style name="ThemeOverlay.App.DatePicker" parent="@style/ThemeOverlay.Material3.MaterialCalendar">
+        <item name="colorPrimary">@color/main</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="shapeAppearanceSmallComponent">@drawable/bg_input_field</item>
+        <item name="shapeAppearanceMediumComponent">@drawable/bg_input_field</item>
+
+    </style>
+
 </resources>

@@ -1,37 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="TextViewFontsStyle">
+    <style name="FieldsFontsStyle">
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">@color/text</item>
-
     </style>
 
-    <style name="TextViewFontsStyle.TitleFontStyle">
+    <style name="FieldsFontsStyle.TitleFontStyle">
         <item name="android:fontFamily">@font/red_hat_display</item>
         <item name="android:textFontWeight">500</item>
     </style>
 
-    <style name="TextViewFontsStyle.TextFontStyle">
+    <style name="FieldsFontsStyle.TextFontStyle">
         <item name="android:fontFamily">@font/public_sans_medium</item>
         <item name="android:textColor">@color/text_input_field</item>
         <item name="android:textFontWeight">400</item>
         <item name="android:textSize">@dimen/text_size</item>
     </style>
 
-    <style name="TextViewFontsStyle.TitleFontStyle.SplashTitleStyle">
+    <style name="FieldsFontsStyle.TitleFontStyle.SplashTitleStyle">
         <item name="android:textSize">@dimen/text_size_splash_screen_title</item>
     </style>
 
-    <style name="TextViewFontsStyle.TitleFontStyle.TitleStyle">
+    <style name="FieldsFontsStyle.TitleFontStyle.TitleStyle">
         <item name="android:textSize">@dimen/text_size_title</item>
     </style>
 
-    <style name="TextViewFontsStyle.TextFontStyle.InputFieldStyle">
+    <style name="AddNoteTitleStyle" parent="FieldsFontsStyle.TitleFontStyle.TitleStyle">
+        <item name="android:textFontWeight">700</item>=
+    </style>
+
+    <style name="NoteTitleStyle" parent="FieldsFontsStyle.TitleFontStyle">
+        <item name="android:textFontWeight">700</item>
+        <item name="android:textSize">@dimen/text_size_note_title</item>
+        <item name="android:textAlignment">textStart</item>
+    </style>
+
+    <style name="ToolbarTextStyle" parent="FieldsFontsStyle.TitleFontStyle">
+        <item name="android:textColor">@color/text_input_field</item>
+        <item name="android:textSize">@dimen/text_size</item>
+    </style>
+
+    <style name="NoteStartDataTextStyle" parent="FieldsFontsStyle.TextFontStyle">
+        <item name="android:textSize">@dimen/text_size_note_start_data</item>
+        <item name="android:layout_marginTop">@dimen/input_field_marginTop</item>
+    </style>
+
+    <style name="InputFieldStyle" parent="FieldsSizeStyle">
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="FieldsSizeStyle" parent="FieldsFontsStyle.TextFontStyle">
         <item name="android:layout_width">@dimen/input_field_wight</item>
         <item name="android:layout_height">@dimen/input_field_height</item>
+        <item name="android:textAlignment">textStart</item>
         <item name="android:background">@drawable/bg_input_field</item>
-        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="TextVIewFieldStyle" parent="FieldsSizeStyle">
+        <item name="android:layout_marginTop">@dimen/input_field_marginTop</item>
+        <item name="android:paddingStart">@dimen/text_view_field_paddingStart</item>
+        <item name="android:paddingEnd">@dimen/text_view_field_paddingEnd</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="AddNoteMessageStyle" parent="InputFieldStyle">
+        <item name="android:singleLine">false</item>
+        <item name="android:layout_height">@dimen/input_field_add_message_height</item>
+        <item name="android:gravity">top</item>
+    </style>
+
+    <style name="NoteMessageStyle" parent="FieldsFontsStyle.TextFontStyle">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:maxLines">2</item>
         <item name="android:ellipsize">end</item>
     </style>
 
@@ -54,10 +97,17 @@
         <item name="android:background">@drawable/button_states</item>
     </style>
 
-    <style name="TextViewFontsStyle.BackToLogInButtonStyle">
+    <style name="FieldsFontsStyle.BackToLogInButtonStyle">
         <item name="android:fontFamily">@font/public_sans</item>
         <item name="android:textFontWeight">400</item>
         <item name="android:textSize">@dimen/text_size</item>
+    </style>
+
+    <style name="ToolbarStyle" parent="InputFieldStyle">
+        <item name="android:layout_width">@dimen/zero_size</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="titleTextAppearance">@style/ToolbarTextStyle</item>
+        <item name="actionMenuTextAppearance">@style/ToolbarTextStyle</item>
     </style>
 
 </resources>

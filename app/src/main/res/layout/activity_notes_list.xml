@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/notes_background"
+    android:id="@+id/notes_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".notes.screen.NotesListActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/notes_list_toolbar"
+        style="@style/ToolbarStyle"
+        android:background="@color/notes_background"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/add_note_screen_back"
+        app:title="@string/note_toolbar_title"
+        app:menu="@menu/notes_list_menu" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/notes_list_recycleView"
+        android:layout_width="@dimen/zero_size"
+        android:layout_height="@dimen/zero_size"
+        android:padding="@dimen/recycleView_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notes_list_toolbar" />
+</androidx.constraintlayout.widget.ConstraintLayout>
