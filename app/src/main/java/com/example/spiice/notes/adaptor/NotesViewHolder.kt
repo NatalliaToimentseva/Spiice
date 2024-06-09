@@ -6,11 +6,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.spiice.R
 import com.example.spiice.entities.NoteEntity
 
-class NotesViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+class NotesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-    fun bind(note: NoteEntity) {
-        view.findViewById<TextView>(R.id.note_title).text = note.title
-        view.findViewById<TextView>(R.id.note_start_data).text = note.startingData
-        view.findViewById<TextView>(R.id.note_message).text = note.message
+    private val noteTitleTV = view.findViewById<TextView>(R.id.note_title)
+    private val noteStartDataTV = view.findViewById<TextView>(R.id.note_start_data)
+    private val noteMessageTV = view.findViewById<TextView>(R.id.note_message)
+
+    fun bind(note: NoteEntity, onClick: (note: NoteEntity) -> Unit) {
+        noteTitleTV.text = note.title
+        noteTitleTV.setOnClickListener {
+            onClick(note)
+        }
+        noteStartDataTV.text = note.startingData
+        noteMessageTV.text = note.message
     }
 }

@@ -19,6 +19,8 @@ import com.google.android.material.textfield.TextInputLayout
 import java.text.DateFormat
 import java.util.Calendar
 
+const val TAG = "tag"
+
 class AddNoteActivity : AppCompatActivity() {
 
     private var isTitleValid = false
@@ -61,7 +63,6 @@ class AddNoteActivity : AppCompatActivity() {
         }
 
         titleAddNoteET.doAfterTextChanged {
-
             isTitleValid = fieldHandler(
                 titleAddNoteET,
                 titleAddNoteTIL,
@@ -69,7 +70,6 @@ class AddNoteActivity : AppCompatActivity() {
             )
             addNoteButton.isEnabled = activateButton(isTitleValid, isMessageValid)
         }
-
 
         messageAddNoteET.doAfterTextChanged {
             isMessageValid = fieldHandler(
@@ -83,7 +83,7 @@ class AddNoteActivity : AppCompatActivity() {
         startDataTextView.setOnClickListener {
             val datePicker =
                 MaterialDatePicker.Builder.datePicker()
-                    .setTitleText("Select start date")
+                    .setTitleText(getString(R.string.data_picker_title))
                     .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
                     .setCalendarConstraints(constraintsBuilder.build())
                     .build()
@@ -91,7 +91,7 @@ class AddNoteActivity : AppCompatActivity() {
             datePicker.addOnPositiveButtonClickListener {
                 startDataTextView.text = DateFormat.getDateInstance(DateFormat.DEFAULT).format(it)
             }
-            datePicker.show(supportFragmentManager, "tag");
+            datePicker.show(supportFragmentManager, TAG)
         }
 
         addNoteButton.setOnClickListener {

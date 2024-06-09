@@ -23,5 +23,6 @@
     <string name="add_note_toolbar_title">Back</string>
     <string name="note_toolbar_title">Logout</string>
     <string name="notes_list_menu_add_new">Add new</string>
+    <string name="data_picker_title">Select start date</string>
 
 </resources>

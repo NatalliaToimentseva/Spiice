@@ -5,6 +5,7 @@ import com.example.spiice.entities.NoteEntity
 object InMemoryNotesList {
 
     private var notesList = listOf(
+        //Test
         NoteEntity(
             "FirstTestNote",
             "Jun 7, 2024",
@@ -22,7 +23,7 @@ object InMemoryNotesList {
         return notesList
     }
 
-    fun setNotes (noteEntity: NoteEntity) {
+    fun setNotes(noteEntity: NoteEntity) {
         notesList = notesList.plus(noteEntity)
     }
 }

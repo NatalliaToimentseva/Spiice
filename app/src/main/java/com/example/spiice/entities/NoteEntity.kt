@@ -8,4 +8,4 @@ data class NoteEntity(
     val title: String,
     val startingData: String,
     val message: String,
-): Parcelable
+) : Parcelable

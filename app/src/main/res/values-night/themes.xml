@@ -7,6 +7,7 @@
 
         <item name="android:actionMenuTextAppearance">@style/ToolbarStyle</item>
         <item name="actionMenuTextColor">@color/text_input_field</item>
+        <item name="actionMenuTextAppearance">@style/ToolbarTextStyle</item>
 
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->

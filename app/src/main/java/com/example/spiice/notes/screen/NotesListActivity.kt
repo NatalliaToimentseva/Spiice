@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -19,11 +20,12 @@ import com.example.spiice.entities.NoteEntity
 import com.example.spiice.notes.adaptor.NotesAdapter
 
 const val KEY = "KEY"
+const val DEPRECATION = "DEPRECATION"
 
 class NotesListActivity : AppCompatActivity(), MenuProvider {
+
     private var newNote: NoteEntity? = null
     private var launcher: ActivityResultLauncher<Intent>? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +42,7 @@ class NotesListActivity : AppCompatActivity(), MenuProvider {
                 newNote = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                     result.data?.getParcelableExtra(KEY, NoteEntity::class.java)
                 } else {
-                    @Suppress("DEPRECATION") result.data?.getParcelableExtra(KEY)
+                    @Suppress(DEPRECATION) result.data?.getParcelableExtra(KEY)
                 }
                 newNote?.let { InMemoryNotesList.setNotes(it) }
                 setNoteListAdapter(InMemoryNotesList.getNotes())
@@ -52,7 +54,9 @@ class NotesListActivity : AppCompatActivity(), MenuProvider {
         findViewById<RecyclerView>(R.id.notes_list_recycleView).run {
             if (adapter == null) {
                 layoutManager = LinearLayoutManager(this@NotesListActivity)
-                adapter = NotesAdapter()
+                adapter = NotesAdapter { note ->
+                    Toast.makeText(this@NotesListActivity, note.title, Toast.LENGTH_SHORT).show()
+                }
             }
             (adapter as? NotesAdapter)?.submitList(noteList)
         }
