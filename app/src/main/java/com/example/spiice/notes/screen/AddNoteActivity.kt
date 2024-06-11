@@ -9,6 +9,9 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.doAfterTextChanged
 import com.example.spiice.R
 import com.example.spiice.entities.NoteEntity
+import com.example.spiice.utils.convertDataFromLocalDataToString
+import com.example.spiice.utils.convertDataFromLongToString
+import com.example.spiice.utils.convertDataFromStringToLocalData
 import com.example.spiice.validations.activateButton
 import com.example.spiice.validations.emptyFieldValidation
 import com.example.spiice.validations.fieldHandler
@@ -16,8 +19,7 @@ import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputLayout
-import java.text.DateFormat
-import java.util.Calendar
+import java.time.LocalDate
 
 const val TAG = "tag"
 
@@ -41,15 +43,12 @@ class AddNoteActivity : AppCompatActivity() {
         val messageAddNoteET = findViewById<EditText>(R.id.note_description_add_screen)
         val addNoteButton = findViewById<Button>(R.id.add_note_button)
 
-        val dataFormat =
-            DateFormat.getDateInstance(DateFormat.DEFAULT).format(Calendar.getInstance().time)
-
         setSupportActionBar(actionBarAddNote)
         actionBarAddNote.setNavigationOnClickListener {
             finish()
         }
 
-        startDataTextView.text = dataFormat
+        startDataTextView.text = convertDataFromLocalDataToString(LocalDate.now())
 
         val constraintsBuilder =
             CalendarConstraints.Builder()
@@ -89,7 +88,7 @@ class AddNoteActivity : AppCompatActivity() {
                     .build()
 
             datePicker.addOnPositiveButtonClickListener {
-                startDataTextView.text = DateFormat.getDateInstance(DateFormat.DEFAULT).format(it)
+                startDataTextView.text = convertDataFromLongToString(it)
             }
             datePicker.show(supportFragmentManager, TAG)
         }
@@ -97,7 +96,7 @@ class AddNoteActivity : AppCompatActivity() {
         addNoteButton.setOnClickListener {
             val newNote = NoteEntity(
                 title = titleAddNoteET.text.toString(),
-                startingData = startDataTextView.text.toString(),
+                startingData = convertDataFromStringToLocalData(startDataTextView.text.toString()),
                 message = messageAddNoteET.text.toString(),
             )
             intent.putExtra(KEY, newNote)

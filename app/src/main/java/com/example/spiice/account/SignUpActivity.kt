@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.doAfterTextChanged
 import com.example.spiice.R
-import com.example.spiice.createSpanForView
+import com.example.spiice.utils.createSpanForView
 import com.example.spiice.validations.activateButton
 import com.example.spiice.validations.emailValidator
 import com.example.spiice.validations.fieldHandler

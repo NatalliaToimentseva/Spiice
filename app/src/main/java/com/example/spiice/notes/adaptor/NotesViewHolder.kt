@@ -5,6 +5,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spiice.R
 import com.example.spiice.entities.NoteEntity
+import com.example.spiice.utils.convertDataFromLocalDataToString
 
 class NotesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -17,7 +18,13 @@ class NotesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         noteTitleTV.setOnClickListener {
             onClick(note)
         }
-        noteStartDataTV.text = note.startingData
+        noteStartDataTV.text = convertDataFromLocalDataToString(note.startingData)
         noteMessageTV.text = note.message
+        noteMessageTV.setOnClickListener {
+            val tv = this.itemView.findViewById<TextView>(R.id.note_message)
+            if (tv.maxLines == 2) {
+                tv.maxLines = Int.MAX_VALUE
+            } else tv.maxLines = 2
+        }
     }
 }
