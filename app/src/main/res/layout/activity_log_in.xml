@@ -2,15 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/login_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bubbles_log_in_background"
-    tools:context=".SignUpActivity">
+    tools:context=".account.SignUpActivity">
 
     <TextView
         android:id="@+id/title_log_in"
-        style="@style/TextViewFontsStyle.TitleFontStyle.TitleStyle"
+        style="@style/FieldsFontsStyle.TitleFontStyle.TitleStyle"
         android:layout_width="@dimen/secondary_title_wight"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/secondary_title_marginTop"
@@ -21,8 +21,8 @@
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
-        android:layout_width="@dimen/barrier_size"
-        android:layout_height="@dimen/barrier_size"
+        android:layout_width="@dimen/zero_size"
+        android:layout_height="@dimen/zero_size"
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="title_log_in" />
 
@@ -43,7 +43,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email_log"
-            style="@style/TextViewFontsStyle.TextFontStyle.InputFieldStyle"
+            style="@style/InputFieldStyle"
             android:hint="@string/email_field"
             android:inputType="textEmailAddress" />
 
@@ -60,7 +60,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password_log"
-            style="@style/TextViewFontsStyle.TextFontStyle.InputFieldStyle"
+            style="@style/InputFieldStyle"
             android:hint="@string/password_field"
             android:inputType="textPassword"
             app:endIconDrawable="@drawable/ic_eye" />
@@ -80,7 +80,7 @@
 
     <TextView
         android:id="@+id/sing_up_from_login_screen_button"
-        style="@style/TextViewFontsStyle.BackToLogInButtonStyle"
+        style="@style/FieldsFontsStyle.BackToLogInButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/account_back_marginTop"

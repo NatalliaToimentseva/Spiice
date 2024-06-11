@@ -12,8 +12,17 @@
     <string name="password_field">Password</string>
     <string name="sign_up_button">Sign-up</string>
     <string name="back_to_log_in">You have an account ? Log-in</string>
-    <string name="error_message_login">Field is required!</string>
+    <string name="error_message_empty_field">Field is required!</string>
     <string name="error_message_name">Length must be from 3 to 255</string>
     <string name="error_message_email">Invalid email!</string>
     <string name="error_message_password">length must be from 6 to 50, at least one capital and small letter, number, sign</string>
+    <string name="add_note_button">Add</string>
+    <string name="add_note_title">Add note</string>
+    <string name="add_note_title_edit_text">Title</string>
+    <string name="add_note_message">Message</string>
+    <string name="add_note_toolbar_title">Back</string>
+    <string name="note_toolbar_title">Logout</string>
+    <string name="notes_list_menu_add_new">Add new</string>
+    <string name="data_picker_title">Select start date</string>
+
 </resources>

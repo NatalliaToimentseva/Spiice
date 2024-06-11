@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.spiice.account.LogInActivity
+import com.example.spiice.account.SignUpActivity
+import com.example.spiice.utils.createSpanForView
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {

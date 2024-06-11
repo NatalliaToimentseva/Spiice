@@ -1,4 +1,4 @@
-package com.example.spiice
+package com.example.spiice.utils
 
 import android.graphics.Typeface
 import android.text.Spannable

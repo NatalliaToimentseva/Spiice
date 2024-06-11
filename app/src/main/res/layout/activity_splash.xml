@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/splash_screen_text"
-        style="@style/TextViewFontsStyle.TitleFontStyle.SplashTitleStyle"
+        style="@style/FieldsFontsStyle.TitleFontStyle.SplashTitleStyle"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/splash_title_height"
         android:layout_marginTop="@dimen/splash_title_marginTop"
@@ -31,7 +31,7 @@
 
     <TextView
         android:id="@+id/login_from_splash_screen_button"
-        style="@style/TextViewFontsStyle.BackToLogInButtonStyle"
+        style="@style/FieldsFontsStyle.BackToLogInButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/account_back_marginTop"
