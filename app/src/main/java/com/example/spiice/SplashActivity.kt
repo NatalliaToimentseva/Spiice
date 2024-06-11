@@ -3,30 +3,29 @@ package com.example.spiice
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.spiice.account.LogInActivity
 import com.example.spiice.account.SignUpActivity
+import com.example.spiice.databinding.ActivitySplashBinding
 import com.example.spiice.utils.createSpanForView
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
 
+    private var binding: ActivitySplashBinding? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        binding = ActivitySplashBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        setContentView(binding?.root)
 
-        val singUpButton = findViewById<Button>(R.id.splash_screen_sing_up_button)
-        val logInButton = findViewById<TextView>(R.id.login_from_splash_screen_button)
+        binding?.loginFromSplashScreenButton?.let { createSpanForView(it) }
 
-        createSpanForView(logInButton)
-
-        singUpButton.setOnClickListener {
+        binding?.splashScreenSingUpButton?.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
         }
 
-        logInButton.setOnClickListener {
+        binding?.loginFromSplashScreenButton?.setOnClickListener {
             startActivity(Intent(this, LogInActivity::class.java))
         }
     }
