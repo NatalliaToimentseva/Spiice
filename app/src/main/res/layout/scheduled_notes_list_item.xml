@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scheduled_notes_list_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/recycleView_item_padding">
+
+    <TextView
+        android:id="@+id/note_title"
+        style="@style/NoteTitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Key Wilson" />
+
+    <TextView
+        android:id="@+id/note_added_data"
+        style="@style/NoteStartDataTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="06.03.2020" />
+
+    <TextView
+        android:id="@+id/note_message"
+        style="@style/NoteMessageStyle"
+        android:layout_width="@dimen/zero_size"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/note_title"
+        tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. " />
+
+    <TextView
+        android:id="@+id/scheduled_data_text"
+        style="@style/NoteStartDataTextStyle"
+        android:layout_width="@dimen/zero_size"
+        android:layout_height="wrap_content"
+        android:text="@string/scheduled_for_TV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/note_message" />
+
+    <TextView
+        android:id="@+id/note_scheduled_data"
+        style="@style/NoteStartDataTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/note_message"
+        tools:text="06.03.2020" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="@dimen/zero_size"
+        android:layout_height="@dimen/zero_size"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="note_scheduled_data,scheduled_data_text" />
+
+    <Space
+        android:id="@+id/space"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zero_size"
+        app:layout_constraintTop_toBottomOf="@+id/barrier" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

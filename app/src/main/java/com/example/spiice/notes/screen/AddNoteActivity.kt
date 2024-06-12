@@ -1,11 +1,14 @@
 package com.example.spiice.notes.screen
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.example.spiice.R
 import com.example.spiice.databinding.ActivityAddNoteBinding
+import com.example.spiice.entities.Note
 import com.example.spiice.entities.NoteEntity
+import com.example.spiice.entities.ScheduledNoteEntity
 import com.example.spiice.utils.convertDataFromLocalDataToString
 import com.example.spiice.utils.convertDataFromLongToString
 import com.example.spiice.utils.convertDataFromStringToLocalData
@@ -92,12 +95,31 @@ class AddNoteActivity : AppCompatActivity() {
         }
 
         binding?.run {
+            checkBoxAddScreen.setOnClickListener{
+                if (checkBoxAddScreen.isChecked) {
+                    noteStartDataAddScreen.visibility = View.VISIBLE
+                } else noteStartDataAddScreen.visibility = View.GONE
+            }
+        }
+
+        binding?.run {
+            var newNote: Note
             addNoteButton.setOnClickListener {
-                val newNote = NoteEntity(
-                    title = noteTitleAddScreen.text.toString(),
-                    startingData = convertDataFromStringToLocalData(noteStartDataAddScreen.text.toString()),
-                    message = noteDescriptionAddScreen.text.toString(),
-                )
+                newNote = if(checkBoxAddScreen.isChecked) {
+                    ScheduledNoteEntity(
+                        title = noteTitleAddScreen.text.toString(),
+                        addedData = LocalDate.now(),
+                        scheduledData = convertDataFromStringToLocalData(noteStartDataAddScreen.text.toString()),
+                        message = noteDescriptionAddScreen.text.toString(),
+                    )
+
+                } else {
+                    NoteEntity(
+                        title = noteTitleAddScreen.text.toString(),
+                        addedData = LocalDate.now(),
+                        message = noteDescriptionAddScreen.text.toString(),
+                    )
+                }
                 intent.putExtra(KEY, newNote)
                 setResult(RESULT_OK, intent)
                 finish()

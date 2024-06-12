@@ -1,15 +1,15 @@
 package com.example.spiice.notes.adaptor
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.spiice.entities.NoteEntity
+import com.example.spiice.entities.Note
 
-class NoteDiffUtil : DiffUtil.ItemCallback<NoteEntity>() {
+class NoteDiffUtil : DiffUtil.ItemCallback<Note>() {
 
-    override fun areItemsTheSame(oldItem: NoteEntity, newItem: NoteEntity): Boolean {
+    override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean {
         return false
     }
 
-    override fun areContentsTheSame(oldItem: NoteEntity, newItem: NoteEntity): Boolean {
+    override fun areContentsTheSame(oldItem: Note, newItem: Note): Boolean {
         return oldItem == newItem
     }
 }

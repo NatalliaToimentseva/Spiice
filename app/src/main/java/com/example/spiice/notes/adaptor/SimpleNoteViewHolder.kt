@@ -1,21 +1,23 @@
 package com.example.spiice.notes.adaptor
 
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.example.spiice.databinding.NotesListItemBinding
+import com.example.spiice.databinding.SimpleNotesListItemBinding
 import com.example.spiice.entities.NoteEntity
 import com.example.spiice.utils.convertDataFromLocalDataToString
 
-class NotesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class SimpleNoteViewHolder(
+    private val binding: SimpleNotesListItemBinding
+) : RecyclerView.ViewHolder(binding.root) {
 
-    private val binding = NotesListItemBinding.bind(view)
-
-    fun bind(note: NoteEntity, onClick: (note: NoteEntity) -> Unit) = binding.run {
+    fun bind(
+        note: NoteEntity,
+        onClick: (note: NoteEntity) -> Unit
+    ) = binding.run {
         noteTitle.text = note.title
         noteTitle.setOnClickListener {
             onClick(note)
         }
-        noteStartData.text = convertDataFromLocalDataToString(note.startingData)
+        noteAddedData.text = convertDataFromLocalDataToString(note.addedData)
         noteMessage.text = note.message
         noteMessage.setOnClickListener {
             val tv = noteMessage
