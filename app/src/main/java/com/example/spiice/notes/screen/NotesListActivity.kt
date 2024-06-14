@@ -58,7 +58,7 @@ class NotesListActivity : AppCompatActivity(), MenuProvider {
                 layoutManager = LinearLayoutManager(this@NotesListActivity)
                 adapter = NotesAdapter { note ->
                     when(note) {
-                        is NoteEntity -> makeToast(applicationContext, note.title)
+                        is NoteEntity -> makeToast(this@NotesListActivity, note.title)
                         is ScheduledNoteEntity -> makeToast(applicationContext, note.title)
                     }
                 }
