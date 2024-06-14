@@ -1,14 +1,18 @@
-package com.example.spiice.notes.screen
+package com.example.spiice.screens.account.notes.screen
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
+import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
+import androidx.fragment.app.Fragment
+import com.example.spiice.InMemoryNotesList
 import com.example.spiice.R
-import com.example.spiice.databinding.ActivityAddNoteBinding
+import com.example.spiice.databinding.FragmentAddNoteBinding
 import com.example.spiice.entities.Note
 import com.example.spiice.entities.NoteEntity
 import com.example.spiice.entities.ScheduledNoteEntity
+import com.example.spiice.navigator
 import com.example.spiice.utils.convertDataFromLocalDataToString
 import com.example.spiice.utils.convertDataFromLongToString
 import com.example.spiice.utils.convertDataFromStringToLocalData
@@ -22,22 +26,28 @@ import java.time.LocalDate
 
 const val TAG = "tag"
 
-class AddNoteActivity : AppCompatActivity() {
+class AddNoteFragment : Fragment() {
 
-    private var binding: ActivityAddNoteBinding? = null
+    private var binding: FragmentAddNoteBinding? = null
 
     private var isTitleValid = false
     private var isMessageValid = false
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityAddNoteBinding.inflate(layoutInflater)
-        super.onCreate(savedInstanceState)
-        setContentView(binding?.root)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentAddNoteBinding.inflate(inflater, container, false)
+        return binding?.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding?.addNoteScreenToolbar?.run {
-            setSupportActionBar(this)
             this.setNavigationOnClickListener {
-                finish()
+                navigator().goBack()
             }
         }
 
@@ -90,12 +100,12 @@ class AddNoteActivity : AppCompatActivity() {
                 datePicker.addOnPositiveButtonClickListener {
                     noteStartDataAddScreen.text = convertDataFromLongToString(it)
                 }
-                datePicker.show(supportFragmentManager, TAG)
+                datePicker.show(parentFragmentManager, TAG)
             }
         }
 
         binding?.run {
-            checkBoxAddScreen.setOnClickListener{
+            checkBoxAddScreen.setOnClickListener {
                 if (checkBoxAddScreen.isChecked) {
                     noteStartDataAddScreen.visibility = View.VISIBLE
                 } else noteStartDataAddScreen.visibility = View.GONE
@@ -105,7 +115,7 @@ class AddNoteActivity : AppCompatActivity() {
         binding?.run {
             var newNote: Note
             addNoteButton.setOnClickListener {
-                newNote = if(checkBoxAddScreen.isChecked) {
+                newNote = if (checkBoxAddScreen.isChecked) {
                     ScheduledNoteEntity(
                         title = noteTitleAddScreen.text.toString(),
                         addedData = LocalDate.now(),
@@ -120,9 +130,8 @@ class AddNoteActivity : AppCompatActivity() {
                         message = noteDescriptionAddScreen.text.toString(),
                     )
                 }
-                intent.putExtra(KEY, newNote)
-                setResult(RESULT_OK, intent)
-                finish()
+                InMemoryNotesList.setNotes(newNote)
+                navigator().goBack()
             }
         }
     }

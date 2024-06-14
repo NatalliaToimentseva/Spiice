@@ -1,4 +1,4 @@
-package com.example.spiice.notes.adaptor
+package com.example.spiice.screens.account.notes.adaptor
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.spiice.entities.Note

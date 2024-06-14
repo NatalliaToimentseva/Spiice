@@ -1,10 +1,13 @@
-package com.example.spiice.account
+package com.example.spiice.screens.account
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
-import com.example.spiice.databinding.ActivitySignUpBinding
+import androidx.fragment.app.Fragment
+import com.example.spiice.databinding.FragmentSignUpBinding
+import com.example.spiice.navigator
 import com.example.spiice.utils.createSpanForView
 import com.example.spiice.validations.activateButton
 import com.example.spiice.validations.emailValidator
@@ -12,18 +15,25 @@ import com.example.spiice.validations.fieldHandler
 import com.example.spiice.validations.nameValidator
 import com.example.spiice.validations.passwordValidator
 
-class SignUpActivity : AppCompatActivity() {
+class SignUpFragment : Fragment() {
 
     private var isValidFirstName = false
     private var isValidLastName = false
     private var isValidEmail = false
     private var isValidPassword = false
-    private var binding: ActivitySignUpBinding? = null
+    private var binding: FragmentSignUpBinding? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivitySignUpBinding.inflate(layoutInflater)
-        super.onCreate(savedInstanceState)
-        setContentView(binding?.root)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentSignUpBinding.inflate(inflater, container, false)
+        return binding?.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding?.loginFromSignUpScreenButton?.let { createSpanForView(it) }
 
@@ -91,7 +101,8 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         binding?.loginFromSignUpScreenButton?.setOnClickListener {
-            startActivity(Intent(this, LogInActivity::class.java))
+            navigator().cancelFragment()
+            navigator().startFragment(LogInFragment())
         }
     }
 }

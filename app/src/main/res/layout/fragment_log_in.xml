@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bubbles_log_in_background"
-    tools:context=".account.SignUpActivity">
+    tools:context=".screens.account.LogInFragment">
 
     <TextView
         android:id="@+id/title_log_in"

@@ -1,4 +1,4 @@
-package com.example.spiice.notes.adaptor
+package com.example.spiice.screens.account.notes.adaptor
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

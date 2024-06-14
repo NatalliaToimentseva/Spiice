@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/notes_background"
-    tools:context=".notes.screen.AddNoteActivity">
+    android:clickable="true"
+    android:focusable="true"
+    tools:context=".screens.account.notes.screen.AddNoteFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/add_note_screen_toolbar"
