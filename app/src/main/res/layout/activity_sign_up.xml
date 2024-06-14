@@ -9,7 +9,7 @@
     tools:context=".account.SignUpActivity">
 
     <TextView
-        android:id="@+id/title_sing_up"
+        android:id="@+id/title_sign_up"
         style="@style/FieldsFontsStyle.TitleFontStyle.TitleStyle"
         android:layout_width="@dimen/secondary_title_wight"
         android:layout_height="@dimen/sing_up_title_height"
@@ -24,7 +24,7 @@
         android:layout_width="@dimen/zero_size"
         android:layout_height="@dimen/zero_size"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="title_sing_up" />
+        app:constraint_referenced_ids="title_sign_up" />
 
     <Space
         android:id="@+id/space"
@@ -42,14 +42,14 @@
         app:layout_constraintTop_toBottomOf="@+id/space">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/first_name_sing_up"
+            android:id="@+id/first_name_sign_up_ET"
             style="@style/InputFieldStyle"
             android:hint="@string/first_name_field" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/last_name_sing_up_layout"
+        android:id="@+id/last_name_sign_up_layout"
         style="@style/TextInputLayoutStyle"
         app:endIconMode="clear_text"
         app:errorEnabled="true"
@@ -58,23 +58,23 @@
         app:layout_constraintTop_toBottomOf="@+id/first_name_sing_up_layout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/last_name_sing_up"
+            android:id="@+id/last_name_sign_up_ET"
             style="@style/InputFieldStyle"
             android:hint="@string/last_name_field" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/email_sing_up_layout"
+        android:id="@+id/email_sign_up_layout"
         style="@style/TextInputLayoutStyle"
         app:endIconMode="clear_text"
         app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/last_name_sing_up_layout">
+        app:layout_constraintTop_toBottomOf="@+id/last_name_sign_up_layout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/email_sing_up"
+            android:id="@+id/email_sign_up_ET"
             style="@style/InputFieldStyle"
             android:hint="@string/email_field"
             android:inputType="textEmailAddress" />
@@ -82,16 +82,16 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/password_sing_up_layout"
+        android:id="@+id/password_sign_up_layout"
         style="@style/TextInputLayoutStyle"
         app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_sing_up_layout"
+        app:layout_constraintTop_toBottomOf="@+id/email_sign_up_layout"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password_sing_up"
+            android:id="@+id/password_sign_up_ET"
             style="@style/InputFieldStyle"
             android:hint="@string/password_field"
             android:inputType="textPassword"
@@ -100,18 +100,18 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/sing_up_button"
+        android:id="@+id/sign_up_button"
         style="@style/ButtonStyle"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/sing_up_button_marginTop"
+        android:layout_marginTop="92dp"
         android:enabled="false"
         android:text="@string/sign_up_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_sing_up_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/password_sign_up_layout" />
 
     <TextView
-        android:id="@+id/login_from_sing_up_screen_button"
+        android:id="@+id/login_from_sign_up_screen_button"
         style="@style/FieldsFontsStyle.BackToLogInButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -119,6 +119,6 @@
         android:text="@string/back_to_log_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sing_up_button" />
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

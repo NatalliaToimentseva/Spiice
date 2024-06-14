@@ -37,12 +37,12 @@ fun fieldHandler(view: EditText, viewLayout: TextInputLayout, isValidated: Boole
     val isValid: Boolean
     if (!isValidated) {
         viewLayout.error = when {
-            (id == R.id.first_name_sing_up || id == R.id.last_name_sing_up) -> getString(
+            (id == R.id.first_name_sign_up_ET || id == R.id.last_name_sign_up_ET) -> getString(
                 view.context,
                 R.string.error_message_name
             )
-            (id == R.id.email_sing_up) -> getString(view.context, R.string.error_message_email)
-            (id == R.id.password_sing_up) -> getString(
+            (id == R.id.email_sign_up_ET) -> getString(view.context, R.string.error_message_email)
+            (id == R.id.password_sign_up_ET) -> getString(
                 view.context,
                 R.string.error_message_password
             )

@@ -14,5 +14,8 @@
     <color name="bubble4">#D8D3EB</color>
     <color name="bubble5">#C0B5EC</color>
     <color name="notes_background">#FAF9FE</color>
+    <color name="bg_past_note">#46F44336</color>
+    <color name="bg_present_note">#5CFFC107</color>
+    <color name="bg_future_note">#548BC34A</color>
 
 </resources>

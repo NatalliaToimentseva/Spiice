@@ -25,7 +25,6 @@
         android:id="@+id/notes_list_recycleView"
         android:layout_width="@dimen/zero_size"
         android:layout_height="@dimen/zero_size"
-        android:padding="@dimen/recycleView_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
