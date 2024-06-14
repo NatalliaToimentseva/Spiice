@@ -110,4 +110,10 @@
         <item name="actionMenuTextAppearance">@style/ToolbarTextStyle</item>
     </style>
 
+    <style name="CheckBoxStyle" parent="FieldsFontsStyle.TextFontStyle">
+        <item name="android:layout_marginStart">@dimen/add_note_title_title_marginStart</item>
+        <item name="buttonTint">@color/check_box_colors</item>
+        <item name="android:textSize">@dimen/text_size_note_start_data</item>
+    </style>
+
 </resources>

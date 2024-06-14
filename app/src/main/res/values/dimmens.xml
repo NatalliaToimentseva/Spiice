@@ -26,10 +26,9 @@
     <dimen name="button_wight">263dp</dimen>
     <dimen name="splash_button_marginTop">250dp</dimen>
     <dimen name="sing_up_button_marginTop">94dp</dimen>
-    <dimen name="add_note_button_marginTop">150dp</dimen>
+    <dimen name="add_note_button_marginTop">207dp</dimen>
     <dimen name="zero_size">0dp</dimen>
     <dimen name="space_height">15dp</dimen>
-    <dimen name="space_note_list_height">50dp</dimen>
-    <dimen name="recycleView_padding">30dp</dimen>
+    <dimen name="recycleView_item_padding">30dp</dimen>
 
 </resources>

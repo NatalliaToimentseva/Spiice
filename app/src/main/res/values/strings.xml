@@ -24,5 +24,7 @@
     <string name="note_toolbar_title">Logout</string>
     <string name="notes_list_menu_add_new">Add new</string>
     <string name="data_picker_title">Select start date</string>
+    <string name="add_note_checkbox">Make it planned</string>
+    <string name="scheduled_for_TV">Scheduled for:</string>
 
 </resources>

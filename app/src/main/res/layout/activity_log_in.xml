@@ -42,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@+id/space">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/email_log"
+            android:id="@+id/email_log_ET"
             style="@style/InputFieldStyle"
             android:hint="@string/email_field"
             android:inputType="textEmailAddress" />
@@ -59,7 +59,7 @@
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password_log"
+            android:id="@+id/password_log_ET"
             style="@style/InputFieldStyle"
             android:hint="@string/password_field"
             android:inputType="textPassword"
