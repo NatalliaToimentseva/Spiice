@@ -5,7 +5,7 @@
     android:id="@+id/onboarding"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.onboarding.OnboardingFragment">
+    tools:context=".ui.onboardingScreen.OnboardingFragment">
 
     <TextView
         android:id="@+id/onb_skip_button"

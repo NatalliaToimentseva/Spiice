@@ -1,4 +1,4 @@
-package com.example.spiice.screens.notes.screen
+package com.example.spiice.ui.addNoteScreen
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,19 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
-import com.example.spiice.InMemoryNotesList
+import com.example.spiice.localDB.InMemoryNotesList
 import com.example.spiice.R
 import com.example.spiice.databinding.FragmentAddNoteBinding
 import com.example.spiice.entities.Note
 import com.example.spiice.entities.NoteEntity
 import com.example.spiice.entities.ScheduledNoteEntity
-import com.example.spiice.navigator
+import com.example.spiice.navigator.navigator
 import com.example.spiice.utils.convertDataFromLocalDataToString
 import com.example.spiice.utils.convertDataFromLongToString
 import com.example.spiice.utils.convertDataFromStringToLocalData
-import com.example.spiice.validations.activateButton
-import com.example.spiice.validations.emptyFieldValidation
-import com.example.spiice.validations.fieldHandler
+import com.example.spiice.utils.activateButton
+import com.example.spiice.utils.emptyFieldValidation
+import com.example.spiice.utils.fieldHandler
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker

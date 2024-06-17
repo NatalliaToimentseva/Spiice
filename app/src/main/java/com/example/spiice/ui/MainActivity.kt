@@ -1,9 +1,12 @@
-package com.example.spiice
+package com.example.spiice.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.spiice.R
 import com.example.spiice.databinding.ActivityMainBinding
+import com.example.spiice.ui.splashScreen.SplashFragment
+import com.example.spiice.navigator.Navigation
 
 class MainActivity : AppCompatActivity(), Navigation {
 

@@ -1,4 +1,4 @@
-package com.example.spiice.entities
+package com.example.spiice.localDB
 
 interface Subscriber {
     fun update()

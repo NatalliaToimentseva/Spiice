@@ -8,7 +8,7 @@
     android:background="@color/notes_background"
     android:clickable="true"
     android:focusable="true"
-    tools:context=".screens.notes.screen.AddNoteFragment">
+    tools:context=".ui.addNoteScreen.AddNoteFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/add_note_screen_toolbar"

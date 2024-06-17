@@ -1,4 +1,4 @@
-package com.example.spiice.screens.notes.screen
+package com.example.spiice.ui.notesListScreen
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,14 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.spiice.InMemoryNotesList
+import com.example.spiice.localDB.InMemoryNotesList
 import com.example.spiice.R
 import com.example.spiice.databinding.FragmentNotesListBinding
 import com.example.spiice.entities.NoteEntity
 import com.example.spiice.entities.ScheduledNoteEntity
-import com.example.spiice.entities.Subscriber
-import com.example.spiice.navigator
-import com.example.spiice.screens.notes.adaptor.NotesAdapter
+import com.example.spiice.localDB.Subscriber
+import com.example.spiice.navigator.navigator
+import com.example.spiice.ui.addNoteScreen.AddNoteFragment
+import com.example.spiice.ui.notesListScreen.adapter.NotesAdapter
 import com.example.spiice.utils.makeToast
 
 class NotesListFragment : Fragment(), Subscriber {

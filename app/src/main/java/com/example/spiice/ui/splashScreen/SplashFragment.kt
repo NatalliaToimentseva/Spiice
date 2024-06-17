@@ -1,14 +1,15 @@
-package com.example.spiice
+package com.example.spiice.ui.splashScreen
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.spiice.screens.account.LogInFragment
+import com.example.spiice.ui.logInScreen.LogInFragment
 import com.example.spiice.databinding.FragmentSplashBinding
-import com.example.spiice.screens.onboarding.ViewPagerFragment
+import com.example.spiice.ui.onboardingScreen.ViewPagerFragment
 import com.example.spiice.utils.createSpanForView
+import com.example.spiice.navigator.navigator
 
 class SplashFragment : Fragment() {
 

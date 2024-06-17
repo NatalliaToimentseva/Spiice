@@ -1,4 +1,4 @@
-package com.example.spiice.validations
+package com.example.spiice.utils
 
 import android.util.Patterns
 import android.widget.EditText

@@ -1,4 +1,4 @@
-package com.example.spiice.screens.onboarding
+package com.example.spiice.ui.onboardingScreen
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.spiice.databinding.FragmentViewPagerBinding
+import com.example.spiice.ui.onboardingScreen.adapter.NoteViewPagerAdapter
 
 class ViewPagerFragment : Fragment() {
 

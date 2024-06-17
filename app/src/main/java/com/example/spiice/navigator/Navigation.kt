@@ -1,4 +1,4 @@
-package com.example.spiice
+package com.example.spiice.navigator
 
 import androidx.fragment.app.Fragment
 

@@ -1,4 +1,4 @@
-package com.example.spiice.screens.account
+package com.example.spiice.ui.signUpScreen
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import com.example.spiice.databinding.FragmentSignUpBinding
-import com.example.spiice.navigator
+import com.example.spiice.navigator.navigator
+import com.example.spiice.ui.logInScreen.LogInFragment
 import com.example.spiice.utils.createSpanForView
-import com.example.spiice.validations.activateButton
-import com.example.spiice.validations.emailValidator
-import com.example.spiice.validations.fieldHandler
-import com.example.spiice.validations.nameValidator
-import com.example.spiice.validations.passwordValidator
+import com.example.spiice.utils.activateButton
+import com.example.spiice.utils.emailValidator
+import com.example.spiice.utils.fieldHandler
+import com.example.spiice.utils.nameValidator
+import com.example.spiice.utils.passwordValidator
 
 class SignUpFragment : Fragment() {
 

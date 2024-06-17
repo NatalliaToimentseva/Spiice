@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bubbles_sing_up_background"
-    tools:context=".screens.account.SignUpFragment">
+    tools:context=".ui.signUpScreen.SignUpFragment">
 
     <TextView
         android:id="@+id/title_sign_up"

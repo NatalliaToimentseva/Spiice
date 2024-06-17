@@ -1,9 +1,8 @@
-package com.example.spiice
+package com.example.spiice.localDB
 
 import com.example.spiice.entities.Note
 import com.example.spiice.entities.NoteEntity
 import com.example.spiice.entities.ScheduledNoteEntity
-import com.example.spiice.entities.Subscriber
 import java.time.LocalDate
 
 object InMemoryNotesList {

@@ -1,4 +1,4 @@
-package com.example.spiice.screens.onboarding
+package com.example.spiice.ui.onboardingScreen
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.example.spiice.databinding.FragmentOnboardingBinding
-import com.example.spiice.navigator
-import com.example.spiice.screens.account.SignUpFragment
+import com.example.spiice.navigator.navigator
+import com.example.spiice.ui.signUpScreen.SignUpFragment
 
 const val ONB_TEXT = "onboarding text"
 const val ONB_IMAGE = "onboarding image"

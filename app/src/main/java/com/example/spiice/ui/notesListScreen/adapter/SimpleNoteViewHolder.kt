@@ -1,4 +1,4 @@
-package com.example.spiice.screens.notes.adaptor
+package com.example.spiice.ui.notesListScreen.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spiice.databinding.SimpleNotesListItemBinding
