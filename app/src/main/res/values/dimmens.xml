@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="text_size_splash_screen_title">96sp</dimen>
+    <dimen name="text_size_onboarding_title">32sp</dimen>
     <dimen name="text_size_title">27sp</dimen>
     <dimen name="text_size_note_title">20sp</dimen>
     <dimen name="text_size">18sp</dimen>
@@ -8,11 +9,7 @@
     <dimen name="input_field_wight">295dp</dimen>
     <dimen name="input_field_height">52dp</dimen>
     <dimen name="input_field_marginTop">5dp</dimen>
-    <dimen name="input_field_side_padding">16dp</dimen>
     <dimen name="input_field_add_message_height">160dp</dimen>
-    <dimen name="input_field_paddingTop">17dp</dimen>
-    <dimen name="text_view_field_paddingEnd">10dp</dimen>
-    <dimen name="text_view_field_paddingStart">15dp</dimen>
     <dimen name="splash_title_height">127dp</dimen>
     <dimen name="splash_title_marginTop">218dp</dimen>
     <dimen name="sing_up_title_height">36dp</dimen>
@@ -22,13 +19,19 @@
     <dimen name="add_note_title_title_marginStart">58dp</dimen>
     <dimen name="account_back_marginTop">8dp</dimen>
     <dimen name="login_button_marginTop">260dp</dimen>
-    <dimen name="button_padding">15dp</dimen>
     <dimen name="button_wight">263dp</dimen>
     <dimen name="splash_button_marginTop">250dp</dimen>
     <dimen name="sing_up_button_marginTop">94dp</dimen>
     <dimen name="add_note_button_marginTop">207dp</dimen>
-    <dimen name="zero_size">0dp</dimen>
-    <dimen name="space_height">15dp</dimen>
     <dimen name="recycleView_item_padding">30dp</dimen>
+    <dimen name="zero_size">0dp</dimen>
+    <dimen name="dm_10">10dp</dimen>
+    <dimen name="dm_16">16dp</dimen>
+    <dimen name="dm_48">48dp</dimen>
+    <dimen name="dm_58">58dp</dimen>
+    <dimen name="dm_92">92dp</dimen>
+    <dimen name="dm_110">110dp</dimen>
+    <dimen name="dm_144">144dp</dimen>
+    <dimen name="dm_370">370dp</dimen>
 
 </resources>

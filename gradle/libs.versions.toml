@@ -1,5 +1,7 @@
 [versions]
 agp = "8.3.0"
+circleindicator = "2.1.6"
+circleindicatorVersion = "1.3.2"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -9,9 +11,13 @@ appcompat = "1.6.1"
 material = "1.12.0"
 activity = "1.8.0"
 constraintlayout = "2.1.4"
+viewpager2 = "1.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "viewpager2" }
+circleindicator = { module = "me.relex:circleindicator", version.ref = "circleindicator" }
+circleindicator-v132 = { module = "me.relex:circleindicator", version.ref = "circleindicatorVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

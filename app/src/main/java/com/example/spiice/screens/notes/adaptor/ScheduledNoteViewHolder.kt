@@ -1,4 +1,4 @@
-package com.example.spiice.screens.account.notes.adaptor
+package com.example.spiice.screens.notes.adaptor
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spiice.R

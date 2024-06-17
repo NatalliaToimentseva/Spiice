@@ -1,4 +1,4 @@
-package com.example.spiice.screens.account.notes.screen
+package com.example.spiice.screens.notes.screen
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -29,7 +29,7 @@
     <Space
         android:id="@+id/space"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/space_height"
+        android:layout_height="@dimen/dm_16"
         app:layout_constraintTop_toBottomOf="@+id/barrier" />
 
     <com.google.android.material.textfield.TextInputLayout

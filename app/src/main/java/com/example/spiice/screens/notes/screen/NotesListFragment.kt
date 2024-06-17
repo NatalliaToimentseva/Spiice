@@ -1,4 +1,4 @@
-package com.example.spiice.screens.account.notes.screen
+package com.example.spiice.screens.notes.screen
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,7 +13,7 @@ import com.example.spiice.entities.NoteEntity
 import com.example.spiice.entities.ScheduledNoteEntity
 import com.example.spiice.entities.Subscriber
 import com.example.spiice.navigator
-import com.example.spiice.screens.account.notes.adaptor.NotesAdapter
+import com.example.spiice.screens.notes.adaptor.NotesAdapter
 import com.example.spiice.utils.makeToast
 
 class NotesListFragment : Fragment(), Subscriber {

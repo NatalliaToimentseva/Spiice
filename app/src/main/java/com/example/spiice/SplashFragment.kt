@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.spiice.screens.account.LogInFragment
-import com.example.spiice.screens.account.SignUpFragment
 import com.example.spiice.databinding.FragmentSplashBinding
+import com.example.spiice.screens.onboarding.ViewPagerFragment
 import com.example.spiice.utils.createSpanForView
 
 class SplashFragment : Fragment() {
@@ -28,7 +28,7 @@ class SplashFragment : Fragment() {
         binding?.loginFromSplashScreenButton?.let { createSpanForView(it) }
 
         binding?.splashScreenSingUpButton?.setOnClickListener {
-            navigator().startFragment(SignUpFragment())
+            navigator().startFragment(ViewPagerFragment())
         }
 
         binding?.loginFromSplashScreenButton?.setOnClickListener {

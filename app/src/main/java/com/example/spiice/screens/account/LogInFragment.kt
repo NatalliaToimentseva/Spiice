@@ -8,7 +8,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import com.example.spiice.databinding.FragmentLogInBinding
 import com.example.spiice.navigator
-import com.example.spiice.screens.account.notes.screen.NotesListFragment
+import com.example.spiice.screens.notes.screen.NotesListFragment
 import com.example.spiice.validations.activateButton
 import com.example.spiice.validations.emptyFieldValidation
 import com.example.spiice.validations.fieldHandler
