@@ -52,4 +52,5 @@ dependencies {
     implementation(libs.androidx.viewpager2)
     implementation (libs.circleindicator)
     implementation (libs.circleindicator.v132)
+    implementation(libs.androidx.fragment.ktx)
 }

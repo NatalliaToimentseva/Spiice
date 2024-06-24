@@ -5,21 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.spiice.localDB.InMemoryNotesList
 import com.example.spiice.R
 import com.example.spiice.databinding.FragmentNotesListBinding
-import com.example.spiice.entities.NoteEntity
-import com.example.spiice.entities.ScheduledNoteEntity
-import com.example.spiice.localDB.Subscriber
+import com.example.spiice.entities.noteEntity.Note
+import com.example.spiice.entities.noteEntity.NoteEntity
+import com.example.spiice.entities.noteEntity.ScheduledNoteEntity
 import com.example.spiice.navigator.navigator
 import com.example.spiice.ui.addNoteScreen.AddNoteFragment
 import com.example.spiice.ui.notesListScreen.adapter.NotesAdapter
 import com.example.spiice.utils.makeToast
 
-class NotesListFragment : Fragment(), Subscriber {
+class NotesListFragment : Fragment() {
 
     private var binding: FragmentNotesListBinding? = null
+    private val viewModel: NotesListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,9 +33,10 @@ class NotesListFragment : Fragment(), Subscriber {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        setNoteListAdapter()
-        InMemoryNotesList.addSubscriber(this)
+        viewModel.notesList.observe(viewLifecycleOwner) {
+            setNoteListAdapter(it)
+        }
+        viewModel.getNotesList()
 
         binding?.notesListToolbar?.let { toolbar ->
             toolbar.setNavigationOnClickListener {
@@ -49,16 +51,7 @@ class NotesListFragment : Fragment(), Subscriber {
         }
     }
 
-    override fun update() {
-        setNoteListAdapter()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        InMemoryNotesList.removeSubscriber(this)
-    }
-
-    private fun setNoteListAdapter() {
+    private fun setNoteListAdapter(notes: List<Note>) {
         binding?.notesListRecycleView?.run {
             if (adapter == null) {
                 layoutManager = LinearLayoutManager(requireActivity())
@@ -69,7 +62,7 @@ class NotesListFragment : Fragment(), Subscriber {
                     }
                 }
             }
-            (adapter as? NotesAdapter)?.submitList(InMemoryNotesList.getNotes())
+            (adapter as? NotesAdapter)?.submitList(notes)
         }
     }
 }

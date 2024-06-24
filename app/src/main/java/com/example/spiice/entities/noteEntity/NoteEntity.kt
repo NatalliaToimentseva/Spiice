@@ -1,4 +1,4 @@
-package com.example.spiice.entities
+package com.example.spiice.entities.noteEntity
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -9,6 +9,7 @@ sealed class Note : Parcelable
 
 @Parcelize
 data class NoteEntity(
+    val id: Long,
     val title: String,
     val addedData: LocalDate,
     val message: String,
@@ -16,6 +17,7 @@ data class NoteEntity(
 
 @Parcelize
 data class ScheduledNoteEntity(
+    val id: Long,
     val title: String,
     val addedData: LocalDate,
     val scheduledData: LocalDate,

@@ -6,14 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
-import com.example.spiice.localDB.InMemoryNotesList
+import androidx.fragment.app.viewModels
 import com.example.spiice.R
 import com.example.spiice.databinding.FragmentAddNoteBinding
-import com.example.spiice.entities.Note
-import com.example.spiice.entities.NoteEntity
-import com.example.spiice.entities.ScheduledNoteEntity
 import com.example.spiice.navigator.navigator
-import com.example.spiice.utils.convertDataFromLocalDataToString
 import com.example.spiice.utils.convertDataFromLongToString
 import com.example.spiice.utils.convertDataFromStringToLocalData
 import com.example.spiice.utils.activateButton
@@ -29,6 +25,7 @@ const val TAG = "tag"
 class AddNoteFragment : Fragment() {
 
     private var binding: FragmentAddNoteBinding? = null
+    private val viewModel: AddNoteViewModel by viewModels()
 
     private var isTitleValid = false
     private var isMessageValid = false
@@ -44,14 +41,20 @@ class AddNoteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.dataPickerVisibility.observe(viewLifecycleOwner) { visibility ->
+            if (visibility) {
+                binding?.noteStartDataAddScreen?.visibility = View.VISIBLE
+            } else binding?.noteStartDataAddScreen?.visibility = View.GONE
+        }
+        viewModel.dataPickerData.observe(viewLifecycleOwner) {
+            binding?.noteStartDataAddScreen?.text = it
+        }
 
         binding?.addNoteScreenToolbar?.run {
             this.setNavigationOnClickListener {
                 navigator().goBack()
             }
         }
-
-        binding?.noteStartDataAddScreen?.text = convertDataFromLocalDataToString(LocalDate.now())
 
         val constraintsBuilder =
             CalendarConstraints.Builder()
@@ -98,7 +101,7 @@ class AddNoteFragment : Fragment() {
                         .build()
 
                 datePicker.addOnPositiveButtonClickListener {
-                    noteStartDataAddScreen.text = convertDataFromLongToString(it)
+                    viewModel.setData(convertDataFromLongToString(it))
                 }
                 datePicker.show(parentFragmentManager, TAG)
             }
@@ -106,31 +109,26 @@ class AddNoteFragment : Fragment() {
 
         binding?.run {
             checkBoxAddScreen.setOnClickListener {
-                if (checkBoxAddScreen.isChecked) {
-                    noteStartDataAddScreen.visibility = View.VISIBLE
-                } else noteStartDataAddScreen.visibility = View.GONE
+                viewModel.setPickerVisibility(checkBoxAddScreen.isChecked)
             }
         }
 
         binding?.run {
-            var newNote: Note
             addNoteButton.setOnClickListener {
-                newNote = if (checkBoxAddScreen.isChecked) {
-                    ScheduledNoteEntity(
+                if (checkBoxAddScreen.isChecked) {
+                    viewModel.setScheduledNote(
                         title = noteTitleAddScreen.text.toString(),
                         addedData = LocalDate.now(),
                         scheduledData = convertDataFromStringToLocalData(noteStartDataAddScreen.text.toString()),
                         message = noteDescriptionAddScreen.text.toString(),
                     )
-
                 } else {
-                    NoteEntity(
+                    viewModel.setSimpleNote(
                         title = noteTitleAddScreen.text.toString(),
                         addedData = LocalDate.now(),
                         message = noteDescriptionAddScreen.text.toString(),
                     )
                 }
-                InMemoryNotesList.setNotes(newNote)
                 navigator().goBack()
             }
         }

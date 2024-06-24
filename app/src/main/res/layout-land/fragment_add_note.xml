@@ -12,7 +12,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/add_note_screen"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dm_20">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/add_note_screen_toolbar"
@@ -52,7 +53,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/note_title_layout_add_screen"
-            style="@style/TextInputLayoutStyle"
+            style="@style/TextInputLandscapeStyle"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +62,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/note_title_add_screen"
-                style="@style/InputFieldStyle"
+                style="@style/LandscapeInputFieldStyle"
                 android:hint="@string/add_note_title_edit_text"
                 android:inputType="text" />
 
@@ -69,7 +70,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/note_description_layout_add_screen"
-            style="@style/TextInputLayoutStyle"
+            style="@style/TextInputLandscapeStyle"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -79,6 +80,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/note_description_add_screen"
                 style="@style/AddNoteMessageStyle"
+                android:layout_width="@dimen/dm_600"
                 android:hint="@string/add_note_message"
                 android:inputType="textMultiLine" />
 
@@ -96,6 +98,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/note_start_data_add_screen"
             style="@style/TextVIewFieldStyle"
+            android:layout_width="@dimen/dm_600"
             android:visibility="gone"
             app:drawableEndCompat="@drawable/start_note_calendar"
             app:layout_constraintEnd_toEndOf="parent"
@@ -106,8 +109,9 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/add_note_button"
             style="@style/ButtonStyle"
+            android:layout_width="@dimen/dm_600"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/add_note_button_marginTop"
+            android:layout_marginTop="@dimen/dm_130"
             android:enabled="false"
             android:text="@string/add_note_button"
             app:layout_constraintEnd_toEndOf="parent"

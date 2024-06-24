@@ -57,6 +57,10 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <style name="LandscapeInputFieldStyle" parent="InputFieldStyle">
+        <item name="android:layout_width">600dp</item>
+    </style>
+
     <style name="FieldsSizeStyle" parent="FieldsFontsStyle.TextFontStyle">
         <item name="android:layout_width">@dimen/input_field_wight</item>
         <item name="android:layout_height">@dimen/input_field_height</item>
@@ -89,6 +93,10 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/input_field_marginTop</item>
         <item name="android:textColorHint">@color/text_input_field</item>
+    </style>
+
+    <style name="TextInputLandscapeStyle" parent="TextInputLayoutStyle">
+        <item name="android:layout_width">600dp</item>
     </style>
 
     <style name="ButtonStyle" parent="Widget.AppCompat.Button">

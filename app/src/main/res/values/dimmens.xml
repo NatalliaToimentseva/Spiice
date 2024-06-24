@@ -27,11 +27,15 @@
     <dimen name="zero_size">0dp</dimen>
     <dimen name="dm_10">10dp</dimen>
     <dimen name="dm_16">16dp</dimen>
+    <dimen name="dm_20">20dp</dimen>
     <dimen name="dm_48">48dp</dimen>
+    <dimen name="dm_50">50dp</dimen>
     <dimen name="dm_58">58dp</dimen>
     <dimen name="dm_92">92dp</dimen>
     <dimen name="dm_110">110dp</dimen>
+    <dimen name="dm_130">130dp</dimen>
     <dimen name="dm_144">144dp</dimen>
     <dimen name="dm_370">370dp</dimen>
+    <dimen name="dm_600">600dp</dimen>
 
 </resources>

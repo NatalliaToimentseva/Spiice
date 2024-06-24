@@ -1,47 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/onboarding"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.onboardingScreen.OnboardingFragment">
 
-    <TextView
-        android:id="@+id/onb_skip_button"
-        style="@style/FieldsFontsStyle.BackToLogInButtonStyle"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/onboarding"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dm_16"
-        android:layout_marginEnd="@dimen/dm_16"
-        android:text="@string/onboarding_ex"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:paddingBottom="@dimen/dm_20">
 
-    <TextView
-        android:id="@+id/onboarding_title"
-        style="@style/TitleOnboardingStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/onb_skip_button"
+            style="@style/FieldsFontsStyle.BackToLogInButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dm_16"
+            android:layout_marginEnd="@dimen/dm_16"
+            android:text="@string/onboarding_ex"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/onb_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/onboarding_title"
-        style="@style/ImageViewStyle" />
+        <TextView
+            android:id="@+id/onboarding_title"
+            style="@style/TitleOnboardingStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/onb_text"
-        style="@style/FieldsFontsStyle.BackToLogInButtonStyle"
-        android:layout_width="@dimen/splash_button_marginTop"
-        android:layout_height="@dimen/dm_58"
-        android:layout_marginTop="@dimen/dm_92"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/onb_image" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/onb_image"
+            style="@style/ImageViewStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/onboarding_title" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/onb_text"
+            style="@style/FieldsFontsStyle.BackToLogInButtonStyle"
+            android:layout_width="@dimen/splash_button_marginTop"
+            android:layout_height="@dimen/dm_58"
+            android:layout_marginTop="@dimen/dm_92"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/onb_image" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

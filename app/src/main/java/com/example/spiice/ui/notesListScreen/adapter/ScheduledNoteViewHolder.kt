@@ -3,7 +3,7 @@ package com.example.spiice.ui.notesListScreen.adapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spiice.R
 import com.example.spiice.databinding.ScheduledNotesListItemBinding
-import com.example.spiice.entities.ScheduledNoteEntity
+import com.example.spiice.entities.noteEntity.ScheduledNoteEntity
 import com.example.spiice.utils.convertDataFromLocalDataToString
 import java.time.LocalDate
 

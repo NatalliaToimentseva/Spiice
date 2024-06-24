@@ -17,22 +17,24 @@ class MainActivity : AppCompatActivity(), Navigation {
         super.onCreate(savedInstanceState)
         setContentView(binding?.root)
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, SplashFragment())
-            .commit()
+        if (savedInstanceState == null){
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, SplashFragment())
+                .commit()
+        }
     }
 
     override fun startFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragment)
             .addToBackStack(null)
+            .replace(R.id.fragment_container, fragment)
             .commit()
     }
 
     override fun addFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
-            .add(R.id.fragment_container, fragment)
             .addToBackStack(null)
+            .add(R.id.fragment_container, fragment)
             .commit()
     }
 

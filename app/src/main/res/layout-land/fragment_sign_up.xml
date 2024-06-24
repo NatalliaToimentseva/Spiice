@@ -11,14 +11,14 @@
         android:id="@+id/sign_up_screen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/dm_16">
+        android:paddingBottom="@dimen/dm_20">
 
         <TextView
             android:id="@+id/title_sign_up"
             style="@style/FieldsFontsStyle.TitleFontStyle.TitleStyle"
             android:layout_width="@dimen/secondary_title_wight"
             android:layout_height="@dimen/sing_up_title_height"
-            android:layout_marginTop="@dimen/secondary_title_marginTop"
+            android:layout_marginTop="@dimen/dm_50"
             android:text="@string/sign_up_screen_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +39,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/first_name_sing_up_layout"
-            style="@style/TextInputLayoutStyle"
+            style="@style/TextInputLandscapeStyle"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,14 +48,14 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/first_name_sign_up_ET"
-                style="@style/InputFieldStyle"
+                style="@style/LandscapeInputFieldStyle"
                 android:hint="@string/first_name_field" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/last_name_sign_up_layout"
-            style="@style/TextInputLayoutStyle"
+            style="@style/TextInputLandscapeStyle"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -64,14 +64,14 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/last_name_sign_up_ET"
-                style="@style/InputFieldStyle"
+                style="@style/LandscapeInputFieldStyle"
                 android:hint="@string/last_name_field" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/email_sign_up_layout"
-            style="@style/TextInputLayoutStyle"
+            style="@style/TextInputLandscapeStyle"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -80,7 +80,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email_sign_up_ET"
-                style="@style/InputFieldStyle"
+                style="@style/LandscapeInputFieldStyle"
                 android:hint="@string/email_field"
                 android:inputType="textEmailAddress" />
 
@@ -88,7 +88,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/password_sign_up_layout"
-            style="@style/TextInputLayoutStyle"
+            style="@style/TextInputLandscapeStyle"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -97,7 +97,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password_sign_up_ET"
-                style="@style/InputFieldStyle"
+                style="@style/LandscapeInputFieldStyle"
                 android:hint="@string/password_field"
                 android:inputType="textPassword"
                 app:endIconDrawable="@drawable/ic_eye" />
@@ -107,8 +107,9 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/sign_up_button"
             style="@style/ButtonStyle"
+            android:layout_width="@dimen/dm_600"
             android:layout_height="wrap_content"
-            android:layout_marginTop="92dp"
+            android:layout_marginTop="@dimen/dm_20"
             android:enabled="false"
             android:text="@string/sign_up_button"
             app:layout_constraintEnd_toEndOf="parent"

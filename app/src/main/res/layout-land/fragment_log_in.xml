@@ -4,22 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bubbles_sing_up_background"
-    tools:context=".ui.signUpScreen.SignUpFragment">
+    android:background="@drawable/bubbles_log_in_background"
+    tools:context=".ui.logInScreen.LogInFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/sign_up_screen"
+        android:id="@+id/login_screen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/dm_16">
+        android:paddingBottom="@dimen/dm_20">
 
         <TextView
-            android:id="@+id/title_sign_up"
+            android:id="@+id/title_log_in"
             style="@style/FieldsFontsStyle.TitleFontStyle.TitleStyle"
             android:layout_width="@dimen/secondary_title_wight"
-            android:layout_height="@dimen/sing_up_title_height"
-            android:layout_marginTop="@dimen/secondary_title_marginTop"
-            android:text="@string/sign_up_screen_title"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dm_50"
+            android:text="@string/log_in_screen_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +29,7 @@
             android:layout_width="@dimen/zero_size"
             android:layout_height="@dimen/zero_size"
             app:barrierDirection="bottom"
-            app:constraint_referenced_ids="title_sign_up" />
+            app:constraint_referenced_ids="title_log_in" />
 
         <Space
             android:id="@+id/space"
@@ -38,8 +38,8 @@
             app:layout_constraintTop_toBottomOf="@+id/barrier" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/first_name_sing_up_layout"
-            style="@style/TextInputLayoutStyle"
+            android:id="@+id/email_log_layout"
+            style="@style/TextInputLandscapeStyle"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,57 +47,25 @@
             app:layout_constraintTop_toBottomOf="@+id/space">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/first_name_sign_up_ET"
-                style="@style/InputFieldStyle"
-                android:hint="@string/first_name_field" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/last_name_sign_up_layout"
-            style="@style/TextInputLayoutStyle"
-            app:endIconMode="clear_text"
-            app:errorEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/first_name_sing_up_layout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/last_name_sign_up_ET"
-                style="@style/InputFieldStyle"
-                android:hint="@string/last_name_field" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/email_sign_up_layout"
-            style="@style/TextInputLayoutStyle"
-            app:endIconMode="clear_text"
-            app:errorEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/last_name_sign_up_layout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/email_sign_up_ET"
-                style="@style/InputFieldStyle"
+                android:id="@+id/email_log_ET"
+                style="@style/LandscapeInputFieldStyle"
                 android:hint="@string/email_field"
                 android:inputType="textEmailAddress" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/password_sign_up_layout"
-            style="@style/TextInputLayoutStyle"
+            android:id="@+id/password_log_layout"
+            style="@style/TextInputLandscapeStyle"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email_sign_up_layout"
+            app:layout_constraintTop_toBottomOf="@+id/email_log_layout"
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/password_sign_up_ET"
-                style="@style/InputFieldStyle"
+                android:id="@+id/password_log_ET"
+                style="@style/LandscapeInputFieldStyle"
                 android:hint="@string/password_field"
                 android:inputType="textPassword"
                 app:endIconDrawable="@drawable/ic_eye" />
@@ -105,26 +73,27 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/sign_up_button"
+            android:id="@+id/log_in_button"
             style="@style/ButtonStyle"
+            android:layout_width="@dimen/dm_600"
             android:layout_height="wrap_content"
-            android:layout_marginTop="92dp"
+            android:layout_marginTop="@dimen/dm_20"
             android:enabled="false"
-            android:text="@string/sign_up_button"
+            android:text="@string/log_in_screen_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password_sign_up_layout" />
+            app:layout_constraintTop_toBottomOf="@+id/password_log_layout" />
 
         <TextView
-            android:id="@+id/login_from_sign_up_screen_button"
+            android:id="@+id/sing_up_from_login_screen_button"
             style="@style/FieldsFontsStyle.BackToLogInButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/account_back_marginTop"
-            android:text="@string/back_to_log_in"
+            android:text="@string/return_to_sign_up_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sign_up_button" />
+            app:layout_constraintTop_toBottomOf="@+id/log_in_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

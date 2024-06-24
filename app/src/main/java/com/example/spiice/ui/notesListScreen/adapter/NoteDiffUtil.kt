@@ -1,7 +1,7 @@
 package com.example.spiice.ui.notesListScreen.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.spiice.entities.Note
+import com.example.spiice.entities.noteEntity.Note
 
 class NoteDiffUtil : DiffUtil.ItemCallback<Note>() {
 

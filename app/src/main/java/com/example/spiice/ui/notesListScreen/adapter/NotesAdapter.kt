@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.spiice.databinding.ScheduledNotesListItemBinding
 import com.example.spiice.databinding.SimpleNotesListItemBinding
-import com.example.spiice.entities.Note
-import com.example.spiice.entities.NoteEntity
-import com.example.spiice.entities.ScheduledNoteEntity
+import com.example.spiice.entities.noteEntity.Note
+import com.example.spiice.entities.noteEntity.NoteEntity
+import com.example.spiice.entities.noteEntity.ScheduledNoteEntity
 import java.time.LocalDate
 
 class NotesAdapter(

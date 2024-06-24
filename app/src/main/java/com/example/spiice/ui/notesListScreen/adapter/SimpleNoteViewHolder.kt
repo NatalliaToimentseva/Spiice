@@ -2,7 +2,7 @@ package com.example.spiice.ui.notesListScreen.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spiice.databinding.SimpleNotesListItemBinding
-import com.example.spiice.entities.NoteEntity
+import com.example.spiice.entities.noteEntity.NoteEntity
 import com.example.spiice.utils.convertDataFromLocalDataToString
 
 class SimpleNoteViewHolder(

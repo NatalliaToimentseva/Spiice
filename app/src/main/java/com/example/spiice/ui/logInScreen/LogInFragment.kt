@@ -1,5 +1,6 @@
 package com.example.spiice.ui.logInScreen
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ import com.example.spiice.utils.fieldHandler
 class LogInFragment : Fragment() {
 
     private var binding: FragmentLogInBinding? = null
+    var preferences : SharedPreferences? = null
     private var isEmailValid = false
     private var isPasswordValid = false
 
