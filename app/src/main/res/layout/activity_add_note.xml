@@ -78,13 +78,23 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/check_box_add_screen"
+        style="@style/CheckBoxStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_note_checkbox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/note_description_layout_add_screen" />
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/note_start_data_add_screen"
         style="@style/TextVIewFieldStyle"
+        android:visibility="gone"
         app:drawableEndCompat="@drawable/start_note_calendar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/note_description_layout_add_screen"
+        app:layout_constraintTop_toBottomOf="@+id/check_box_add_screen"
         tools:text="12,September 2024" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -96,6 +106,6 @@
         android:text="@string/add_note_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/note_start_data_add_screen" />
+        app:layout_constraintTop_toBottomOf="@+id/note_description_layout_add_screen" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
