@@ -13,21 +13,8 @@
         android:theme="@style/Theme.Spiice"
         tools:targetApi="31">
         <activity
-            android:name=".notes.screen.AddNoteActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".notes.screen.NotesListActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".account.LogInActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".account.SignUpActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".SplashActivity"
-            android:exported="true"
-            android:screenOrientation="portrait">
+            android:name=".ui.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -26,6 +26,12 @@
         <item name="android:textSize">@dimen/text_size_title</item>
     </style>
 
+    <style name="TitleOnboardingStyle" parent="FieldsFontsStyle.TitleFontStyle">
+        <item name="android:textSize">@dimen/text_size_onboarding_title</item>
+        <item name="android:layout_marginTop">@dimen/dm_48</item>
+        <item name="android:layout_marginStart">@dimen/dm_144</item>
+    </style>
+
     <style name="AddNoteTitleStyle" parent="FieldsFontsStyle.TitleFontStyle.TitleStyle">
         <item name="android:textFontWeight">700</item>=
     </style>
@@ -51,6 +57,10 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <style name="LandscapeInputFieldStyle" parent="InputFieldStyle">
+        <item name="android:layout_width">600dp</item>
+    </style>
+
     <style name="FieldsSizeStyle" parent="FieldsFontsStyle.TextFontStyle">
         <item name="android:layout_width">@dimen/input_field_wight</item>
         <item name="android:layout_height">@dimen/input_field_height</item>
@@ -60,8 +70,8 @@
 
     <style name="TextVIewFieldStyle" parent="FieldsSizeStyle">
         <item name="android:layout_marginTop">@dimen/input_field_marginTop</item>
-        <item name="android:paddingStart">@dimen/text_view_field_paddingStart</item>
-        <item name="android:paddingEnd">@dimen/text_view_field_paddingEnd</item>
+        <item name="android:paddingStart">@dimen/dm_16</item>
+        <item name="android:paddingEnd">@dimen/dm_10</item>
         <item name="android:gravity">center_vertical</item>
     </style>
 
@@ -72,7 +82,7 @@
     </style>
 
     <style name="NoteMessageStyle" parent="FieldsFontsStyle.TextFontStyle">
-        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginTop">@dimen/dm_10</item>
         <item name="android:textAlignment">textStart</item>
         <item name="android:maxLines">2</item>
         <item name="android:ellipsize">end</item>
@@ -85,9 +95,13 @@
         <item name="android:textColorHint">@color/text_input_field</item>
     </style>
 
+    <style name="TextInputLandscapeStyle" parent="TextInputLayoutStyle">
+        <item name="android:layout_width">600dp</item>
+    </style>
+
     <style name="ButtonStyle" parent="Widget.AppCompat.Button">
         <item name="android:layout_width">@dimen/button_wight</item>
-        <item name="android:padding">@dimen/button_padding</item>
+        <item name="android:padding">@dimen/dm_16</item>
         <item name="android:fontFamily">@font/public_sans_medium</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textFontWeight">500</item>
@@ -114,6 +128,19 @@
         <item name="android:layout_marginStart">@dimen/add_note_title_title_marginStart</item>
         <item name="buttonTint">@color/check_box_colors</item>
         <item name="android:textSize">@dimen/text_size_note_start_data</item>
+    </style>
+
+    <style name="CircleIndicatorStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/input_field_height</item>
+        <item name="android:layout_marginBottom">@dimen/dm_16</item>
+    </style>
+
+    <style name="ImageViewStyle">
+        <item name="android:layout_width">@dimen/dm_370</item>
+        <item name="android:layout_height">@dimen/dm_370</item>
+        <item name="android:layout_marginTop">@dimen/dm_110</item>
+        <item name="android:scaleType">center</item>
     </style>
 
 </resources>
