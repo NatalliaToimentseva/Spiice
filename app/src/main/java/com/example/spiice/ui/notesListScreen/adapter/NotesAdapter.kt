@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.spiice.databinding.ScheduledNotesListItemBinding
 import com.example.spiice.databinding.SimpleNotesListItemBinding
-import com.example.spiice.entities.noteEntity.Note
-import com.example.spiice.entities.noteEntity.NoteEntity
-import com.example.spiice.entities.noteEntity.ScheduledNoteEntity
+import com.example.spiice.models.noteModel.Note
+import com.example.spiice.models.noteModel.SimpleNote
+import com.example.spiice.models.noteModel.ScheduledNote
 import java.time.LocalDate
 
 class NotesAdapter(
@@ -18,8 +18,8 @@ class NotesAdapter(
 
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)) {
-            is NoteEntity -> ViewHolderType.SIMPLE.id
-            is ScheduledNoteEntity -> ViewHolderType.SCHEDULED.id
+            is SimpleNote -> ViewHolderType.SIMPLE.id
+            is ScheduledNote -> ViewHolderType.SCHEDULED.id
         }
     }
 
@@ -51,11 +51,11 @@ class NotesAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val localDate = LocalDate.now()
         when (val item = getItem(position)) {
-            is NoteEntity -> {
+            is SimpleNote -> {
                 (holder as? SimpleNoteViewHolder)?.bind(item, onClick)
             }
 
-            is ScheduledNoteEntity -> {
+            is ScheduledNote -> {
                 (holder as? ScheduledNoteViewHolder)?.bind(item, localDate, onClick)
             }
         }

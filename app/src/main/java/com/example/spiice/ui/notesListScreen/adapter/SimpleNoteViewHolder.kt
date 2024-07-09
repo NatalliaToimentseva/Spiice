@@ -2,7 +2,7 @@ package com.example.spiice.ui.notesListScreen.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spiice.databinding.SimpleNotesListItemBinding
-import com.example.spiice.entities.noteEntity.NoteEntity
+import com.example.spiice.models.noteModel.SimpleNote
 import com.example.spiice.utils.convertDataFromLocalDataToString
 
 const val NOTE_MESSAGE_LINES = 2
@@ -12,8 +12,8 @@ class SimpleNoteViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(
-        note: NoteEntity,
-        onClick: (note: NoteEntity) -> Unit
+        note: SimpleNote,
+        onClick: (note: SimpleNote) -> Unit
     ) = binding.run {
         noteTitle.text = note.title
         noteTitle.setOnClickListener {
