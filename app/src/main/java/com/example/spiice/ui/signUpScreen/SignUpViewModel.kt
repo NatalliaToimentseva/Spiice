@@ -2,6 +2,7 @@ package com.example.spiice.ui.signUpScreen
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.spiice.models.accountModel.SignUpAccountData
 import com.example.spiice.repositoty.RepositoryProvider
 import com.example.spiice.roomDB.AccountAlreadyExistException
 import com.example.spiice.roomDB.AppExceptions
@@ -25,7 +26,11 @@ class SignUpViewModel : ViewModel() {
     ): Boolean {
         var isSuccess = false
         try {
-            accountRepository.createAccount(firstName, lastName, email, password)
+            accountRepository.createAccount(
+                SignUpAccountData(
+                    firstName, lastName, email, password.toCharArray()
+                )
+            )
             isSuccess = true
         } catch (e: AccountAlreadyExistException) {
             setException(e)

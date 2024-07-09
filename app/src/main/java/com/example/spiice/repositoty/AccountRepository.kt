@@ -1,10 +1,11 @@
 package com.example.spiice.repositoty
 
 import com.example.spiice.models.accountModel.LoginAccountData
+import com.example.spiice.models.accountModel.SignUpAccountData
 
 interface AccountRepository {
 
-    fun getAccount(email: String, password: String): LoginAccountData
+    fun getAccount(email: String, password: String): String
 
-    fun createAccount(firstName: String, lastName: String, email: String, password: String)
+    fun createAccount(signUpAccountData: SignUpAccountData)
 }

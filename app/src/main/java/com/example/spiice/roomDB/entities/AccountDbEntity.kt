@@ -21,6 +21,8 @@ data class AccountDbEntity(
     val lastName: String,
     @ColumnInfo("email", collate = ColumnInfo.NOCASE)
     val email: String,
-    @ColumnInfo("password")
-    val password: String,
+    @ColumnInfo("hash")
+    val hash: String,
+    @ColumnInfo("salt", defaultValue = "")
+    val salt: String,
 )

@@ -1,33 +1,33 @@
 package com.example.spiice.roomDB.repository
 
 import android.database.sqlite.SQLiteConstraintException
-import com.example.spiice.models.accountModel.LoginAccountData
+import com.example.spiice.models.accountModel.SignUpAccountData
 import com.example.spiice.repositoty.AccountRepository
 import com.example.spiice.roomDB.AccountAlreadyExistException
 import com.example.spiice.roomDB.AuthException
 import com.example.spiice.roomDB.DataBaseProvider
 import com.example.spiice.roomDB.PasswordMismatchException
-import com.example.spiice.roomDB.entities.AccountDbEntity
-import com.example.spiice.utils.toLoginAccountData
+import com.example.spiice.utils.securityUtils.DefaultSecurityUtilsImpl
+import com.example.spiice.utils.toAccountDBEntity
 
 class AccountRoomDbRepository : AccountRepository {
 
-    override fun getAccount(email: String, password: String): LoginAccountData {
-        val account = DataBaseProvider.accountDao?.getAccountByEmail(email)?.toLoginAccountData()
+    private val securityUtils = DefaultSecurityUtilsImpl()
+
+    override fun getAccount(email: String, password: String): String {
+        val account = DataBaseProvider.accountDao?.getAccountByEmail(email)
             ?: throw AuthException("The password or email are incorrect!")
-        if (account.password != password) throw PasswordMismatchException("The password or email are incorrect!")
-        return account
+        val saltBytes = securityUtils.stringToBytes(account.salt)
+        val hashPassword = securityUtils.passwordToHash(password.toCharArray(), saltBytes)
+        val hashString = securityUtils.bytesToString(hashPassword)
+        if (account.hash != hashString) throw PasswordMismatchException("The password or email are incorrect!")
+        return account.email
     }
 
-    override fun createAccount(
-        firstName: String,
-        lastName: String,
-        email: String,
-        password: String
-    ) {
+    override fun createAccount(signUpAccountData: SignUpAccountData) {
         try {
             DataBaseProvider.accountDao?.createAccount(
-                AccountDbEntity(0, firstName, lastName, email, password)
+                signUpAccountData.toAccountDBEntity()
             )
         } catch (e: SQLiteConstraintException) {
             val appException = AccountAlreadyExistException("Account already exist!")

@@ -73,13 +73,13 @@ class LogInFragment : Fragment() {
 
         binding?.apply {
             logInButton.setOnClickListener {
-                viewModel.getAccount(
+                viewModel.getEmail(
                     emailLogET.text.toString(),
                     passwordLogET.text.toString()
-                )?.let { account ->
+                )?.let { email ->
                     if (SharedPreferencesRepository.isFirstLaunch()) SharedPreferencesRepository.setFirstLaunch()
-                    SharedPreferencesRepository.setEmail(account.email)
-                    navigator().startFragment(NotesListFragment.getFragment(account.email))
+                    SharedPreferencesRepository.setEmail(email)
+                    navigator().startFragment(NotesListFragment.getFragment(email))
                 }
             }
         }

@@ -13,6 +13,6 @@ interface AccountDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     fun createAccount(accountDbEntity: AccountDbEntity)
 
-    @Query("SELECT id, email, password FROM Accounts WHERE email = :email")
+    @Query("SELECT id, email, hash, salt FROM Accounts WHERE email = :email")
     fun getAccountByEmail(email: String): AccountLogInTuple?
 }

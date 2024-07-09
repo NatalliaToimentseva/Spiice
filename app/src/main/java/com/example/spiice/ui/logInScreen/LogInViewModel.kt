@@ -2,7 +2,6 @@ package com.example.spiice.ui.logInScreen
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.spiice.models.accountModel.LoginAccountData
 import com.example.spiice.repositoty.RepositoryProvider
 import com.example.spiice.roomDB.AppExceptions
 import com.example.spiice.roomDB.AuthException
@@ -19,16 +18,16 @@ class LogInViewModel : ViewModel() {
         _exceptions.value = e
     }
 
-    fun getAccount(email: String, password: String): LoginAccountData? {
-        var loginAccountData: LoginAccountData? = null
+    fun getEmail(email: String, password: String): String? {
+        var emailFromAccount: String? = null
         try {
-            loginAccountData = accountRepository.getAccount(email, password)
+            emailFromAccount = accountRepository.getAccount(email, password)
         } catch (e: AuthException) {
             setException(e)
         } catch (e: PasswordMismatchException){
             setException(e)
         }
         setException(null)
-        return loginAccountData
+        return emailFromAccount
     }
 }
