@@ -1,6 +1,5 @@
 package com.example.spiice.repositoty
 
-import com.example.spiice.models.accountModel.LoginAccountData
 import com.example.spiice.models.accountModel.SignUpAccountData
 
 interface AccountRepository {
