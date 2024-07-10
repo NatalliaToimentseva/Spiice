@@ -9,6 +9,6 @@ data class AccountLogInTuple(
     val email: String,
     @ColumnInfo("hash")
     val hash: String,
-    @ColumnInfo("salt", defaultValue = "")
+    @ColumnInfo("salt")
     val salt: String,
 )

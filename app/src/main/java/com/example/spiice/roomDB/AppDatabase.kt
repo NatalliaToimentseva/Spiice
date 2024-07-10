@@ -5,7 +5,6 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.spiice.roomDB.dao.AccountDao
-import com.example.spiice.roomDB.dao.AutoMigrationSpec1To2
 import com.example.spiice.roomDB.dao.NotesDao
 import com.example.spiice.roomDB.entities.AccountDbEntity
 import com.example.spiice.roomDB.entities.NoteDbEntity

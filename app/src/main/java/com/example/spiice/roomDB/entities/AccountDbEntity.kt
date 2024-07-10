@@ -23,6 +23,6 @@ data class AccountDbEntity(
     val email: String,
     @ColumnInfo("hash")
     val hash: String,
-    @ColumnInfo("salt", defaultValue = "")
+    @ColumnInfo("salt", defaultValue = "1")
     val salt: String,
 )
