@@ -29,7 +29,7 @@ class AccountRoomDbRepository @Inject constructor(
     override suspend fun createAccount(signUpAccountData: SignUpAccountData) {
         try {
             accountDao.createAccount(
-                signUpAccountData.toAccountDBEntity()
+                signUpAccountData.toAccountDBEntity(securityUtils)
             )
         } catch (e: SQLiteConstraintException) {
             val appException = AccountAlreadyExistException("Account already exist!")

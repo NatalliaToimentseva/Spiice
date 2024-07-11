@@ -7,10 +7,6 @@ import com.example.spiice.models.noteModel.SimpleNote
 import com.example.spiice.roomDB.entities.AccountDbEntity
 import com.example.spiice.roomDB.entities.NoteDbEntity
 import com.example.spiice.utils.securityUtils.SecurityUtils
-import javax.inject.Inject
-
-@Inject
-lateinit var securityUtils: SecurityUtils
 
 fun NoteDbEntity.toNote(): Note {
     return if (this.scheduledData != null) {
@@ -35,7 +31,7 @@ fun List<NoteDbEntity>.toNoteList(): List<Note> {
     }
 }
 
-fun SignUpAccountData.toAccountDBEntity(): AccountDbEntity {
+fun SignUpAccountData.toAccountDBEntity(securityUtils: SecurityUtils): AccountDbEntity {
     val salt = securityUtils.generateSalt()
     val hash = securityUtils.passwordToHash(password, salt)
     return AccountDbEntity(

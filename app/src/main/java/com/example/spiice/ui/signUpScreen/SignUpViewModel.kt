@@ -52,11 +52,11 @@ class SignUpViewModel @Inject constructor (
                         firstName, lastName, email, password.toCharArray()
                     )
                 )
-                _progressBarVisibility.postValue(false)
                 _email.postValue(email)
             } catch (e: AccountAlreadyExistException) {
                 setException(e)
             }
+            _progressBarVisibility.postValue(false)
         }
     }
 }

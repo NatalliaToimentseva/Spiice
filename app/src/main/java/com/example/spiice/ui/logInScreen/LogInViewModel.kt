@@ -43,12 +43,12 @@ class LogInViewModel @Inject constructor (
             try {
                 _progressBarVisibility.postValue(true)
                 _email.postValue(accountRepository.getAccount(email, password))
-                _progressBarVisibility.postValue(false)
             } catch (e: AuthException) {
                 setException(e)
             } catch (e: PasswordMismatchException) {
                 setException(e)
             }
+            _progressBarVisibility.postValue(false)
         }
     }
 }
