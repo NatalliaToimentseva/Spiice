@@ -19,7 +19,10 @@ import com.example.spiice.utils.fieldHandler
 import com.example.spiice.utils.makeToast
 import com.example.spiice.utils.nameValidator
 import com.example.spiice.utils.passwordValidator
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SignUpFragment : Fragment() {
 
     private var isValidFirstName = false
@@ -28,6 +31,8 @@ class SignUpFragment : Fragment() {
     private var isValidPassword = false
     private var binding: FragmentSignUpBinding? = null
     private val viewModel: SignUpViewModel by viewModels()
+    @Inject
+    lateinit var sharedPreferencesRepository: SharedPreferencesRepository
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,10 +54,13 @@ class SignUpFragment : Fragment() {
         }
         viewModel.email.observe(viewLifecycleOwner) { email ->
             email?.let {
-                SharedPreferencesRepository.setEmail(it)
+                sharedPreferencesRepository.setEmail(it)
                 navigator().startFragment(NotesListFragment.getFragment(it))
                 viewModel.clearEmail()
             }
+        }
+        viewModel.progressBarVisibility.observe(viewLifecycleOwner) {
+            binding?.progressBar?.visibility = if (it) View.VISIBLE else View.GONE
         }
 
         binding?.loginFromSignUpScreenButton?.let { createSpanForView(it) }
@@ -124,7 +132,7 @@ class SignUpFragment : Fragment() {
                     emailSignUpET.text.toString(),
                     passwordSignUpET.text.toString()
                 )
-                if (SharedPreferencesRepository.isFirstLaunch()) SharedPreferencesRepository.setFirstLaunch()
+                if (sharedPreferencesRepository.isFirstLaunch()) sharedPreferencesRepository.setFirstLaunch()
             }
         }
 

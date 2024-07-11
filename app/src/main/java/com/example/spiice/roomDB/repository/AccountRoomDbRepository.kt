@@ -5,17 +5,19 @@ import com.example.spiice.models.accountModel.SignUpAccountData
 import com.example.spiice.repositoty.AccountRepository
 import com.example.spiice.roomDB.AccountAlreadyExistException
 import com.example.spiice.roomDB.AuthException
-import com.example.spiice.roomDB.DataBaseProvider
 import com.example.spiice.roomDB.PasswordMismatchException
-import com.example.spiice.utils.securityUtils.DefaultSecurityUtilsImpl
+import com.example.spiice.roomDB.dao.AccountDao
+import com.example.spiice.utils.securityUtils.SecurityUtils
 import com.example.spiice.utils.toAccountDBEntity
+import javax.inject.Inject
 
-class AccountRoomDbRepository : AccountRepository {
-
-    private val securityUtils = DefaultSecurityUtilsImpl()
+class AccountRoomDbRepository @Inject constructor(
+    private val accountDao: AccountDao,
+    private val securityUtils: SecurityUtils
+) : AccountRepository {
 
     override suspend fun getAccount(email: String, password: String): String {
-        val account = DataBaseProvider.accountDao?.getAccountByEmail(email)
+        val account = accountDao.getAccountByEmail(email)
             ?: throw AuthException("The password or email are incorrect!")
         val saltBytes = securityUtils.stringToBytes(account.salt)
         val hashPassword = securityUtils.passwordToHash(password.toCharArray(), saltBytes)
@@ -26,7 +28,7 @@ class AccountRoomDbRepository : AccountRepository {
 
     override suspend fun createAccount(signUpAccountData: SignUpAccountData) {
         try {
-            DataBaseProvider.accountDao?.createAccount(
+            accountDao.createAccount(
                 signUpAccountData.toAccountDBEntity()
             )
         } catch (e: SQLiteConstraintException) {

@@ -4,8 +4,9 @@ import android.util.Base64
 import java.security.SecureRandom
 import javax.crypto.SecretKeyFactory
 import javax.crypto.spec.PBEKeySpec
+import javax.inject.Inject
 
-class DefaultSecurityUtilsImpl : SecurityUtils {
+class DefaultSecurityUtilsImpl @Inject constructor(): SecurityUtils {
 
     private val secureRandom = SecureRandom()
 

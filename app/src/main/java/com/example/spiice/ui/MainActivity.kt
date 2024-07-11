@@ -10,10 +10,15 @@ import com.example.spiice.navigator.Navigation
 import com.example.spiice.repositoty.SharedPreferencesRepository
 import com.example.spiice.ui.logInScreen.LogInFragment
 import com.example.spiice.ui.notesListScreen.NotesListFragment
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), Navigation {
 
     private var binding: ActivityMainBinding? = null
+    @Inject
+    lateinit var sharedPreferencesRepository: SharedPreferencesRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -28,8 +33,8 @@ class MainActivity : AppCompatActivity(), Navigation {
     }
 
     private fun chooseStartFragment(): Fragment {
-        val userId = SharedPreferencesRepository.getEmail()
-        return if (SharedPreferencesRepository.isFirstLaunch()) {
+        val userId = sharedPreferencesRepository.getEmail()
+        return if (sharedPreferencesRepository.isFirstLaunch()) {
             SplashFragment()
         } else if (userId != null) {
             NotesListFragment.getFragment(userId)

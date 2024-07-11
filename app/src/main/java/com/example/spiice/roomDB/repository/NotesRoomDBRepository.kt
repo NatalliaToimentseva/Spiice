@@ -2,18 +2,21 @@ package com.example.spiice.roomDB.repository
 
 import com.example.spiice.models.noteModel.Note
 import com.example.spiice.repositoty.NotesRepository
-import com.example.spiice.roomDB.DataBaseProvider
+import com.example.spiice.roomDB.dao.NotesDao
 import com.example.spiice.roomDB.entities.NoteDbEntity
 import com.example.spiice.utils.toNoteList
 import java.time.LocalDate
+import javax.inject.Inject
 
-class NotesRoomDBRepository : NotesRepository {
+class NotesRoomDBRepository @Inject constructor(
+    private val notesDao: NotesDao
+): NotesRepository {
     override suspend fun getListNotes(userEmail: String): List<Note> {
-        return DataBaseProvider.notesDao?.getNotes(userEmail)?.toNoteList() ?: arrayListOf()
+        return notesDao.getNotes(userEmail).toNoteList() ?: arrayListOf()
     }
 
     override suspend fun addSimpleNote(userEmail: String, title: String, addedData: LocalDate, message: String) {
-        DataBaseProvider.notesDao?.createNote(
+        notesDao.createNote(
             NoteDbEntity(
                 id = 0,
                 userEmail = userEmail,
@@ -32,7 +35,7 @@ class NotesRoomDBRepository : NotesRepository {
         scheduledData: LocalDate,
         message: String
     ) {
-        DataBaseProvider.notesDao?.createNote(
+        notesDao.createNote(
             NoteDbEntity(
                 id = 0,
                 userEmail = userEmail,

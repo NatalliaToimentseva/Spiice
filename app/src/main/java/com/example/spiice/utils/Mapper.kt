@@ -6,9 +6,11 @@ import com.example.spiice.models.noteModel.ScheduledNote
 import com.example.spiice.models.noteModel.SimpleNote
 import com.example.spiice.roomDB.entities.AccountDbEntity
 import com.example.spiice.roomDB.entities.NoteDbEntity
-import com.example.spiice.utils.securityUtils.DefaultSecurityUtilsImpl
+import com.example.spiice.utils.securityUtils.SecurityUtils
+import javax.inject.Inject
 
-private val securityUtils = DefaultSecurityUtilsImpl()
+@Inject
+lateinit var securityUtils: SecurityUtils
 
 fun NoteDbEntity.toNote(): Note {
     return if (this.scheduledData != null) {

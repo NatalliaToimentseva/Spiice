@@ -16,13 +16,18 @@ import com.example.spiice.utils.activateButton
 import com.example.spiice.utils.emptyFieldValidation
 import com.example.spiice.utils.fieldHandler
 import com.example.spiice.utils.makeToast
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class LogInFragment : Fragment() {
 
     private var binding: FragmentLogInBinding? = null
     private var isEmailValid = false
     private var isPasswordValid = false
     private val viewModel: LogInViewModel by viewModels()
+    @Inject
+    lateinit var sharedPreferencesRepository: SharedPreferencesRepository
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,10 +49,13 @@ class LogInFragment : Fragment() {
         }
         viewModel.email.observe(viewLifecycleOwner) { email ->
             email?.let {
-                SharedPreferencesRepository.setEmail(it)
+                sharedPreferencesRepository.setEmail(it)
                 navigator().startFragment(NotesListFragment.getFragment(it))
                 viewModel.clearEmail()
             }
+        }
+        viewModel.progressBarVisibility.observe(viewLifecycleOwner) {
+            binding?.progressBar?.visibility = if (it) View.VISIBLE else View.GONE
         }
 
         binding?.run {
@@ -87,7 +95,7 @@ class LogInFragment : Fragment() {
                     emailLogET.text.toString(),
                     passwordLogET.text.toString()
                 )
-                if (SharedPreferencesRepository.isFirstLaunch()) SharedPreferencesRepository.setFirstLaunch()
+                if (sharedPreferencesRepository.isFirstLaunch()) sharedPreferencesRepository.setFirstLaunch()
             }
         }
 

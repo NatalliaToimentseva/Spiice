@@ -4,21 +4,27 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.spiice.models.accountModel.SignUpAccountData
-import com.example.spiice.repositoty.RepositoryProvider
+import com.example.spiice.repositoty.AccountRepository
 import com.example.spiice.roomDB.AccountAlreadyExistException
 import com.example.spiice.roomDB.AppExceptions
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SignUpViewModel : ViewModel() {
-
-    private val accountRepository = RepositoryProvider.getAccountRepository()
+@HiltViewModel
+class SignUpViewModel @Inject constructor (
+    private val accountRepository: AccountRepository
+) : ViewModel() {
 
     private var _exceptions = MutableLiveData<AppExceptions?>(null)
     val exceptions get() = _exceptions
 
     private var _email = MutableLiveData<String?>(null)
     val email get() = _email
+
+    private var _progressBarVisibility = MutableLiveData(false)
+    val progressBarVisibility get() = _progressBarVisibility
 
     private fun setException(e: AppExceptions?) {
         _exceptions.postValue(e)
@@ -40,11 +46,13 @@ class SignUpViewModel : ViewModel() {
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
+                _progressBarVisibility.postValue(true)
                 accountRepository.createAccount(
                     SignUpAccountData(
                         firstName, lastName, email, password.toCharArray()
                     )
                 )
+                _progressBarVisibility.postValue(false)
                 _email.postValue(email)
             } catch (e: AccountAlreadyExistException) {
                 setException(e)

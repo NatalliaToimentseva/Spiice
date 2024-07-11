@@ -20,14 +20,19 @@ import com.example.spiice.utils.fieldHandler
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
+import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDate
+import javax.inject.Inject
 
 const val TAG = "tag"
 
+@AndroidEntryPoint
 class AddNoteFragment : Fragment() {
 
     private var binding: FragmentAddNoteBinding? = null
     private val viewModel: AddNoteViewModel by viewModels()
+    @Inject
+    lateinit var sharedPreferencesRepository: SharedPreferencesRepository
 
     private var isTitleValid = false
     private var isMessageValid = false
@@ -51,8 +56,11 @@ class AddNoteFragment : Fragment() {
         viewModel.dataPickerData.observe(viewLifecycleOwner) {
             binding?.noteStartDataAddScreen?.text = it
         }
+        viewModel.progressBarVisibility.observe(viewLifecycleOwner) {
+            binding?.progressBar?.visibility = if (it) View.VISIBLE else View.GONE
+        }
 
-        val userEmail: String? = SharedPreferencesRepository.getEmail()
+        val userEmail: String? = sharedPreferencesRepository.getEmail()
 
         binding?.addNoteScreenToolbar?.run {
             this.setNavigationOnClickListener {

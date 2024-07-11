@@ -19,13 +19,18 @@ import com.example.spiice.ui.addNoteScreen.AddNoteFragment
 import com.example.spiice.ui.logInScreen.LogInFragment
 import com.example.spiice.ui.notesListScreen.adapter.NotesAdapter
 import com.example.spiice.utils.makeToast
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 const val EMAIL = "email"
 
+@AndroidEntryPoint
 class NotesListFragment : Fragment() {
 
     private var binding: FragmentNotesListBinding? = null
     private val viewModel: NotesListViewModel by viewModels()
+    @Inject
+    lateinit var sharedPreferencesRepository: SharedPreferencesRepository
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,7 +52,7 @@ class NotesListFragment : Fragment() {
 
         binding?.notesListToolbar?.let { toolbar ->
             toolbar.setNavigationOnClickListener {
-                SharedPreferencesRepository.clearUserData()
+                sharedPreferencesRepository.clearUserData()
                 navigator().cancelFragment()
                 navigator().startFragment(LogInFragment())
             }
