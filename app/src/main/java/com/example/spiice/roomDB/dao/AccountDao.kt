@@ -11,8 +11,8 @@ import com.example.spiice.roomDB.entities.AccountLogInTuple
 interface AccountDao {
 
     @Insert(onConflict = OnConflictStrategy.ABORT)
-    fun createAccount(accountDbEntity: AccountDbEntity)
+    suspend fun createAccount(accountDbEntity: AccountDbEntity)
 
     @Query("SELECT id, email, hash, salt FROM Accounts WHERE email = :email")
-    fun getAccountByEmail(email: String): AccountLogInTuple?
+    suspend fun getAccountByEmail(email: String): AccountLogInTuple?
 }

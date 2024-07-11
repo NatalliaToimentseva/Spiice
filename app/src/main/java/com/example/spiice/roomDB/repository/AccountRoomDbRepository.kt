@@ -14,7 +14,7 @@ class AccountRoomDbRepository : AccountRepository {
 
     private val securityUtils = DefaultSecurityUtilsImpl()
 
-    override fun getAccount(email: String, password: String): String {
+    override suspend fun getAccount(email: String, password: String): String {
         val account = DataBaseProvider.accountDao?.getAccountByEmail(email)
             ?: throw AuthException("The password or email are incorrect!")
         val saltBytes = securityUtils.stringToBytes(account.salt)
@@ -24,7 +24,7 @@ class AccountRoomDbRepository : AccountRepository {
         return account.email
     }
 
-    override fun createAccount(signUpAccountData: SignUpAccountData) {
+    override suspend fun createAccount(signUpAccountData: SignUpAccountData) {
         try {
             DataBaseProvider.accountDao?.createAccount(
                 signUpAccountData.toAccountDBEntity()

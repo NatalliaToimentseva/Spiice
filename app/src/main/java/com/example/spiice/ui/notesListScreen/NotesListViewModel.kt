@@ -2,8 +2,11 @@ package com.example.spiice.ui.notesListScreen
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.spiice.models.noteModel.Note
 import com.example.spiice.repositoty.RepositoryProvider
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class NotesListViewModel : ViewModel() {
 
@@ -19,6 +22,8 @@ class NotesListViewModel : ViewModel() {
     }
 
     fun getNotesList() {
-        _notesList.value = userEmail.value?.let { notesRepository.getListNotes(it) }
+        viewModelScope.launch(Dispatchers.IO) {
+            _notesList.postValue(userEmail.value?.let { notesRepository.getListNotes(it) })
+        }
     }
 }

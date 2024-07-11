@@ -42,7 +42,17 @@ class SignUpFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.exceptions.observe(viewLifecycleOwner) { e ->
-            if (e != null) e.message?.let { makeToast(requireActivity(), it) }
+            if (e != null) e.message?.let {
+                makeToast(requireActivity(), it)
+                viewModel.clearException()
+            }
+        }
+        viewModel.email.observe(viewLifecycleOwner) { email ->
+            email?.let {
+                SharedPreferencesRepository.setEmail(it)
+                navigator().startFragment(NotesListFragment.getFragment(it))
+                viewModel.clearEmail()
+            }
         }
 
         binding?.loginFromSignUpScreenButton?.let { createSpanForView(it) }
@@ -108,17 +118,13 @@ class SignUpFragment : Fragment() {
 
         binding?.apply {
             signUpButton.setOnClickListener {
-                if (viewModel.createAccount(
-                        firstNameSignUpET.text.toString(),
-                        lastNameSignUpET.text.toString(),
-                        emailSignUpET.text.toString(),
-                        passwordSignUpET.text.toString()
-                    )
-                ) {
-                    if (SharedPreferencesRepository.isFirstLaunch()) SharedPreferencesRepository.setFirstLaunch()
-                    SharedPreferencesRepository.setEmail(emailSignUpET.text.toString())
-                    navigator().startFragment(NotesListFragment.getFragment(emailSignUpET.text.toString()))
-                }
+                viewModel.createAccount(
+                    firstNameSignUpET.text.toString(),
+                    lastNameSignUpET.text.toString(),
+                    emailSignUpET.text.toString(),
+                    passwordSignUpET.text.toString()
+                )
+                if (SharedPreferencesRepository.isFirstLaunch()) SharedPreferencesRepository.setFirstLaunch()
             }
         }
 

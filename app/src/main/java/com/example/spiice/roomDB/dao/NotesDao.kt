@@ -9,8 +9,8 @@ import com.example.spiice.roomDB.entities.NoteDbEntity
 interface NotesDao {
 
     @Insert
-    fun createNote(noteDbEntity: NoteDbEntity)
+    suspend fun createNote(noteDbEntity: NoteDbEntity)
 
     @Query("SELECT * FROM Notes WHERE user_email == :email ")
-    fun getNotes(email: String): List<NoteDbEntity>
+    suspend fun getNotes(email: String): List<NoteDbEntity>
 }

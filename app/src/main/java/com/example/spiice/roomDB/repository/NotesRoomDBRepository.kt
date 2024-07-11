@@ -8,11 +8,11 @@ import com.example.spiice.utils.toNoteList
 import java.time.LocalDate
 
 class NotesRoomDBRepository : NotesRepository {
-    override fun getListNotes(userEmail: String): List<Note> {
+    override suspend fun getListNotes(userEmail: String): List<Note> {
         return DataBaseProvider.notesDao?.getNotes(userEmail)?.toNoteList() ?: arrayListOf()
     }
 
-    override fun addSimpleNote(userEmail: String, title: String, addedData: LocalDate, message: String) {
+    override suspend fun addSimpleNote(userEmail: String, title: String, addedData: LocalDate, message: String) {
         DataBaseProvider.notesDao?.createNote(
             NoteDbEntity(
                 id = 0,
@@ -25,7 +25,7 @@ class NotesRoomDBRepository : NotesRepository {
         )
     }
 
-    override fun addScheduledNote(
+    override suspend fun addScheduledNote(
         userEmail: String,
         title: String,
         addedData: LocalDate,

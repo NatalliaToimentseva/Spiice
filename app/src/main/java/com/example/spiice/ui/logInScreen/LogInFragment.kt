@@ -37,7 +37,17 @@ class LogInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.exceptions.observe(viewLifecycleOwner) { e ->
-            if (e != null) e.message?.let { makeToast(requireActivity(), it) }
+            if (e != null) e.message?.let {
+                makeToast(requireActivity(), it)
+                viewModel.clearException()
+            }
+        }
+        viewModel.email.observe(viewLifecycleOwner) { email ->
+            email?.let {
+                SharedPreferencesRepository.setEmail(it)
+                navigator().startFragment(NotesListFragment.getFragment(it))
+                viewModel.clearEmail()
+            }
         }
 
         binding?.run {
@@ -76,11 +86,8 @@ class LogInFragment : Fragment() {
                 viewModel.getEmail(
                     emailLogET.text.toString(),
                     passwordLogET.text.toString()
-                )?.let { email ->
-                    if (SharedPreferencesRepository.isFirstLaunch()) SharedPreferencesRepository.setFirstLaunch()
-                    SharedPreferencesRepository.setEmail(email)
-                    navigator().startFragment(NotesListFragment.getFragment(email))
-                }
+                )
+                if (SharedPreferencesRepository.isFirstLaunch()) SharedPreferencesRepository.setFirstLaunch()
             }
         }
 
