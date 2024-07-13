@@ -16,7 +16,6 @@
     <dimen name="secondary_title_wight">98dp</dimen>
     <dimen name="secondary_title_marginTop">120dp</dimen>
     <dimen name="add_note_title_title_marginTop">82dp</dimen>
-    <dimen name="add_note_title_title_marginStart">58dp</dimen>
     <dimen name="account_back_marginTop">8dp</dimen>
     <dimen name="login_button_marginTop">260dp</dimen>
     <dimen name="button_wight">263dp</dimen>
@@ -28,6 +27,7 @@
     <dimen name="dm_10">10dp</dimen>
     <dimen name="dm_16">16dp</dimen>
     <dimen name="dm_20">20dp</dimen>
+    <dimen name="dm_30">30dp</dimen>
     <dimen name="dm_48">48dp</dimen>
     <dimen name="dm_50">50dp</dimen>
     <dimen name="dm_58">58dp</dimen>
@@ -35,6 +35,7 @@
     <dimen name="dm_110">110dp</dimen>
     <dimen name="dm_130">130dp</dimen>
     <dimen name="dm_144">144dp</dimen>
+    <dimen name="dm_340">340dp</dimen>
     <dimen name="dm_370">370dp</dimen>
     <dimen name="dm_600">600dp</dimen>
 

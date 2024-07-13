@@ -11,22 +11,16 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NotesListViewModel @Inject constructor (
-    private val notesRepository: NotesRepository
+class NotesListViewModel @Inject constructor(
+    private val notesRepository: NotesRepository,
 ) : ViewModel() {
 
     private var _notesList = MutableLiveData<List<Note>>()
     val notesList get() = _notesList
 
-    private var userEmail = MutableLiveData<String>()
-
-    fun addEmail(email: String) {
-        userEmail.value = email
-    }
-
-    fun getNotesList() {
+    fun getNotesList(email: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            _notesList.postValue(userEmail.value?.let { notesRepository.getListNotes(it) })
+            _notesList.postValue(notesRepository.getListNotes(email))
         }
     }
 }

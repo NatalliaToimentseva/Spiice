@@ -10,12 +10,17 @@ import javax.inject.Inject
 
 class NotesRoomDBRepository @Inject constructor(
     private val notesDao: NotesDao
-): NotesRepository {
+) : NotesRepository {
     override suspend fun getListNotes(userEmail: String): List<Note> {
-        return notesDao.getNotes(userEmail).toNoteList() ?: arrayListOf()
+        return notesDao.getNotes(userEmail).toNoteList()
     }
 
-    override suspend fun addSimpleNote(userEmail: String, title: String, addedData: LocalDate, message: String) {
+    override suspend fun addSimpleNote(
+        userEmail: String,
+        title: String,
+        addedData: LocalDate,
+        message: String
+    ) {
         notesDao.createNote(
             NoteDbEntity(
                 id = 0,
@@ -45,5 +50,13 @@ class NotesRoomDBRepository @Inject constructor(
                 scheduledData = scheduledData
             )
         )
+    }
+
+    override suspend fun deleteAllNotes(userEmail: String) {
+        notesDao.deleteUserNotes(userEmail)
+    }
+
+    override suspend fun searchInNotes(query: String, email: String): List<Note> {
+        return notesDao.searchInNotes(query, email).toNoteList()
     }
 }

@@ -9,14 +9,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.spiice.R
 import com.example.spiice.databinding.FragmentAddNoteBinding
-import com.example.spiice.navigator.navigator
 import com.example.spiice.repositoty.SharedPreferencesRepository
-import com.example.spiice.ui.notesListScreen.NotesListFragment
 import com.example.spiice.utils.convertDataFromLongToString
 import com.example.spiice.utils.convertDataFromStringToLocalData
 import com.example.spiice.utils.activateButton
+import com.example.spiice.utils.clearFields
+import com.example.spiice.utils.convertDataFromLocalDataToString
 import com.example.spiice.utils.emptyFieldValidation
 import com.example.spiice.utils.fieldHandler
+import com.example.spiice.utils.makeToast
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -31,6 +32,7 @@ class AddNoteFragment : Fragment() {
 
     private var binding: FragmentAddNoteBinding? = null
     private val viewModel: AddNoteViewModel by viewModels()
+
     @Inject
     lateinit var sharedPreferencesRepository: SharedPreferencesRepository
 
@@ -61,19 +63,6 @@ class AddNoteFragment : Fragment() {
         }
 
         val userEmail: String? = sharedPreferencesRepository.getEmail()
-
-        binding?.addNoteScreenToolbar?.run {
-            this.setNavigationOnClickListener {
-                navigator().cancelFragment()
-                navigator().startFragment(userEmail?.let { email ->
-                    NotesListFragment.getFragment(
-                        email
-                    )
-                }
-                    ?: NotesListFragment())
-//                navigator().goBack()
-            }
-        }
 
         val constraintsBuilder =
             CalendarConstraints.Builder()
@@ -150,14 +139,18 @@ class AddNoteFragment : Fragment() {
                         message = noteDescriptionAddScreen.text.toString(),
                     )
                 }
-                navigator().cancelFragment()
-                navigator().startFragment(userEmail?.let { email ->
-                    NotesListFragment.getFragment(
-                        email
+                makeToast(requireContext(), getString(R.string.note_created_message))
+                binding?.let {
+                    clearFields(
+                        it.noteTitleAddScreen,
+                        it.noteDescriptionAddScreen
                     )
+                    checkBoxAddScreen.isChecked = false
+                    noteTitleLayoutAddScreen.error = null
+                    noteDescriptionLayoutAddScreen.error = null
+                    viewModel.setPickerVisibility(false)
+                    viewModel.setData(convertDataFromLocalDataToString(LocalDate.now()))
                 }
-                    ?: NotesListFragment())
-//                navigator().goBack()
             }
         }
     }

@@ -7,6 +7,7 @@ import com.example.spiice.roomDB.AccountAlreadyExistException
 import com.example.spiice.roomDB.AuthException
 import com.example.spiice.roomDB.PasswordMismatchException
 import com.example.spiice.roomDB.dao.AccountDao
+import com.example.spiice.roomDB.entities.UserTuple
 import com.example.spiice.utils.securityUtils.SecurityUtils
 import com.example.spiice.utils.toAccountDBEntity
 import javax.inject.Inject
@@ -26,6 +27,10 @@ class AccountRoomDbRepository @Inject constructor(
         return account.email
     }
 
+    override suspend fun getUserName(email: String): UserTuple {
+        return accountDao.getUserData(email)
+    }
+
     override suspend fun createAccount(signUpAccountData: SignUpAccountData) {
         try {
             accountDao.createAccount(
@@ -36,5 +41,9 @@ class AccountRoomDbRepository @Inject constructor(
             appException.initCause(e)
             throw appException
         }
+    }
+
+    override suspend fun deleteAccountByEmail(email: String) {
+        accountDao.deleteAccountByEmail(email)
     }
 }

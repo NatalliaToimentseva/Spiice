@@ -3,13 +3,14 @@ package com.example.spiice.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.example.spiice.R
 import com.example.spiice.databinding.ActivityMainBinding
 import com.example.spiice.ui.splashScreen.SplashFragment
 import com.example.spiice.navigator.Navigation
 import com.example.spiice.repositoty.SharedPreferencesRepository
 import com.example.spiice.ui.logInScreen.LogInFragment
-import com.example.spiice.ui.notesListScreen.NotesListFragment
+import com.example.spiice.ui.navigationContainer.NavigationFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -17,6 +18,7 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity(), Navigation {
 
     private var binding: ActivityMainBinding? = null
+
     @Inject
     lateinit var sharedPreferencesRepository: SharedPreferencesRepository
 
@@ -26,9 +28,7 @@ class MainActivity : AppCompatActivity(), Navigation {
         setContentView(binding?.root)
 
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, chooseStartFragment())
-                .commit()
+            replaceFragment(chooseStartFragment())
         }
     }
 
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), Navigation {
         return if (sharedPreferencesRepository.isFirstLaunch()) {
             SplashFragment()
         } else if (userId != null) {
-            NotesListFragment.getFragment(userId)
+            NavigationFragment()
         } else LogInFragment()
     }
 
@@ -55,11 +55,35 @@ class MainActivity : AppCompatActivity(), Navigation {
             .commit()
     }
 
+    override fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit()
+    }
+
     override fun cancelFragment() {
         supportFragmentManager.popBackStack()
     }
 
     override fun goBack() {
         onBackPressed()
+    }
+
+    override fun goToStart() {
+        supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+    }
+
+    override fun logout() {
+        if (supportFragmentManager.backStackEntryCount > 1) {
+            goToStart()
+        } else {
+            goToStart()
+            startFragment(LogInFragment())
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if (supportFragmentManager.backStackEntryCount == 0) finish()
     }
 }

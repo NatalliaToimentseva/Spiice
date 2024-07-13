@@ -12,3 +12,16 @@ data class AccountLogInTuple(
     @ColumnInfo("salt")
     val salt: String,
 )
+
+data class UserTuple(
+    @ColumnInfo("first_name")
+    val firstName: String,
+    @ColumnInfo("last_name")
+    val lastName: String,
+)
+
+fun UserTuple.getFullName(): String {
+    return "$firstName $lastName"
+}
+
+

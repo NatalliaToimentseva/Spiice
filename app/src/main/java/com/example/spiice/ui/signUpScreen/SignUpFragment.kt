@@ -11,9 +11,10 @@ import com.example.spiice.databinding.FragmentSignUpBinding
 import com.example.spiice.navigator.navigator
 import com.example.spiice.repositoty.SharedPreferencesRepository
 import com.example.spiice.ui.logInScreen.LogInFragment
-import com.example.spiice.ui.notesListScreen.NotesListFragment
+import com.example.spiice.ui.navigationContainer.NavigationFragment
 import com.example.spiice.utils.createSpanForView
 import com.example.spiice.utils.activateButton
+import com.example.spiice.utils.clearFields
 import com.example.spiice.utils.emailValidator
 import com.example.spiice.utils.fieldHandler
 import com.example.spiice.utils.makeToast
@@ -31,6 +32,7 @@ class SignUpFragment : Fragment() {
     private var isValidPassword = false
     private var binding: FragmentSignUpBinding? = null
     private val viewModel: SignUpViewModel by viewModels()
+
     @Inject
     lateinit var sharedPreferencesRepository: SharedPreferencesRepository
 
@@ -52,10 +54,18 @@ class SignUpFragment : Fragment() {
                 viewModel.clearException()
             }
         }
-        viewModel.email.observe(viewLifecycleOwner) { email ->
-            email?.let {
-                sharedPreferencesRepository.setEmail(it)
-                navigator().startFragment(NotesListFragment.getFragment(it))
+        viewModel.email.observe(viewLifecycleOwner) { emailData ->
+            emailData?.let { email ->
+                sharedPreferencesRepository.setEmail(email)
+                binding?.let { binding ->
+                    clearFields(
+                        binding.emailSignUpET,
+                        binding.firstNameSignUpET,
+                        binding.lastNameSignUpET,
+                        binding.passwordSignUpET
+                    )
+                }
+                navigator().startFragment(NavigationFragment())
                 viewModel.clearEmail()
             }
         }
@@ -136,9 +146,17 @@ class SignUpFragment : Fragment() {
             }
         }
 
-        binding?.loginFromSignUpScreenButton?.setOnClickListener {
-            navigator().cancelFragment()
-            navigator().startFragment(LogInFragment())
+        binding?.let { binding ->
+            binding.loginFromSignUpScreenButton.setOnClickListener {
+                navigator().cancelFragment()
+                navigator().startFragment(LogInFragment())
+                clearFields(
+                    binding.emailSignUpET,
+                    binding.firstNameSignUpET,
+                    binding.lastNameSignUpET,
+                    binding.passwordSignUpET
+                )
+            }
         }
     }
 }

@@ -1,28 +1,30 @@
-package com.example.spiice.ui.notesListScreen
+package com.example.spiice.ui.searchScreen
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.spiice.R
-import com.example.spiice.databinding.FragmentNotesListBinding
+import com.example.spiice.databinding.FragmentSearchBinding
 import com.example.spiice.models.noteModel.Note
-import com.example.spiice.models.noteModel.SimpleNote
 import com.example.spiice.models.noteModel.ScheduledNote
+import com.example.spiice.models.noteModel.SimpleNote
 import com.example.spiice.repositoty.SharedPreferencesRepository
 import com.example.spiice.ui.notesListScreen.adapter.NotesAdapter
 import com.example.spiice.utils.makeToast
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.Locale
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class NotesListFragment : Fragment() {
+class SearchFragment : Fragment() {
 
-    private var binding: FragmentNotesListBinding? = null
-    private val viewModel: NotesListViewModel by viewModels()
+    var binding: FragmentSearchBinding? = null
+    private val viewModel: SearchViewModel by viewModels()
 
     @Inject
     lateinit var sharedPreferencesRepository: SharedPreferencesRepository
@@ -32,23 +34,42 @@ class NotesListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentNotesListBinding.inflate(inflater, container, false)
+        binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.notesList.observe(viewLifecycleOwner) { list ->
-            setNoteListAdapter(list)
+        viewModel.searchNoteList.observe(viewLifecycleOwner) { notesList ->
+            setNoteListAdapter(notesList)
         }
-        sharedPreferencesRepository.getEmail()?.let { viewModel.getNotesList(it) }
+
+        binding?.searchView?.setOnQueryTextListener(object :
+            SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                binding?.searchView?.clearFocus()
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let { text ->
+                    sharedPreferencesRepository.getEmail()?.let { email ->
+                        viewModel.getSearchNotes(
+                            text.lowercase(Locale.getDefault()),
+                            email
+                        )
+                    }
+                }
+                return false
+            }
+        })
     }
 
     private fun setNoteListAdapter(notes: List<Note>) {
-        binding?.notesListRecycleView?.run {
+        binding?.searchRecycleView?.run {
             if (adapter == null) {
                 layoutManager = LinearLayoutManager(requireActivity())
-                adapter = NotesAdapter (R.id.notes_list){ note ->
+                adapter = NotesAdapter (R.id.search_fragment){ note ->
                     when (note) {
                         is SimpleNote -> makeToast(requireActivity(), note.title)
                         is ScheduledNote -> makeToast(requireActivity(), note.title)

@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.spiice.roomDB.entities.AccountDbEntity
 import com.example.spiice.roomDB.entities.AccountLogInTuple
+import com.example.spiice.roomDB.entities.UserTuple
 
 @Dao
 interface AccountDao {
@@ -15,4 +16,10 @@ interface AccountDao {
 
     @Query("SELECT id, email, hash, salt FROM Accounts WHERE email = :email")
     suspend fun getAccountByEmail(email: String): AccountLogInTuple?
+
+    @Query("DELETE FROM Accounts WHERE email = :email")
+    suspend fun deleteAccountByEmail(email: String)
+
+    @Query("SELECT first_name, last_name FROM Accounts WHERE email = :email" )
+    suspend fun getUserData(email: String): UserTuple
 }

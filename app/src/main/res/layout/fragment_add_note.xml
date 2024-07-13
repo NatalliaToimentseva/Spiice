@@ -14,25 +14,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/add_note_screen_toolbar"
-            style="@style/ToolbarStyle"
-            android:background="@color/notes_background"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@drawable/add_note_screen_back"
-            app:title="@string/add_note_toolbar_title" />
-
         <TextView
             android:id="@+id/title_add_note"
             style="@style/AddNoteTitleStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/add_note_title_title_marginStart"
-            android:layout_marginTop="@dimen/add_note_title_title_marginTop"
+            android:layout_marginStart="@dimen/dm_30"
+            android:layout_marginTop="@dimen/dm_30"
             android:text="@string/add_note_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -52,7 +40,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/note_title_layout_add_screen"
-            style="@style/TextInputLayoutStyle"
+            style="@style/TextInputAddNoteLayoutStyle"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +49,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/note_title_add_screen"
-                style="@style/InputFieldStyle"
+                style="@style/InputFieldAddNotedStyle"
                 android:hint="@string/add_note_title_edit_text"
                 android:inputType="text" />
 
@@ -69,7 +57,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/note_description_layout_add_screen"
-            style="@style/TextInputLayoutStyle"
+            style="@style/TextInputAddNoteLayoutStyle"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"

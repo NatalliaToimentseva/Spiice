@@ -20,7 +20,7 @@ class SharedPreferencesRepository @Inject constructor(
     private val preferences: SharedPreferences
     private val userPreferences: SharedPreferences
 
-    init{
+    init {
         preferences = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
         userPreferences = context.getSharedPreferences(USER_PREFERENCES, Context.MODE_PRIVATE)
     }

@@ -41,6 +41,7 @@ fun fieldHandler(view: EditText, viewLayout: TextInputLayout, isValidated: Boole
                 view.context,
                 R.string.error_message_name
             )
+
             (id == R.id.email_sign_up_ET) -> getString(view.context, R.string.error_message_email)
             (id == R.id.password_sign_up_ET) -> getString(
                 view.context,
@@ -64,4 +65,10 @@ fun activateButton(vararg screenFields: Boolean): Boolean {
         if (!field) count++
     }
     return (count == 0)
+}
+
+fun clearFields(vararg view: EditText) {
+    for (field in view) {
+        field.setText("")
+    }
 }

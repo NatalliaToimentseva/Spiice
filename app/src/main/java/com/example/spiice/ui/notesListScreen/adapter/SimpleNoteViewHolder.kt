@@ -1,6 +1,7 @@
 package com.example.spiice.ui.notesListScreen.adapter
 
 import androidx.recyclerview.widget.RecyclerView
+import com.example.spiice.R
 import com.example.spiice.databinding.SimpleNotesListItemBinding
 import com.example.spiice.models.noteModel.SimpleNote
 import com.example.spiice.utils.convertDataFromLocalDataToString
@@ -13,8 +14,12 @@ class SimpleNoteViewHolder(
 
     fun bind(
         note: SimpleNote,
+        fragmentId: Int,
         onClick: (note: SimpleNote) -> Unit
     ) = binding.run {
+        if (fragmentId == R.id.search_fragment) {
+            simpleNotesListItem.setBackgroundResource(R.drawable.bg_search_field)
+        }
         noteTitle.text = note.title
         noteTitle.setOnClickListener {
             onClick(note)

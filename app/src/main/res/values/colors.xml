@@ -3,6 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="main">#9378FF</color>
+    <color name="main_inactive_icon">#669378FF</color>
     <color name="main_transparent">#299378FF</color>
     <color name="buttonDisabled">#949378FF</color>
     <color name="text">#120E21</color>
@@ -15,8 +16,8 @@
     <color name="bubble4">#D8D3EB</color>
     <color name="bubble5">#C0B5EC</color>
     <color name="notes_background">#FAF9FE</color>
-    <color name="bg_past_note">#46F44336</color>
-    <color name="bg_present_note">#5CFFC107</color>
-    <color name="bg_future_note">#548BC34A</color>
+    <color name="bg_past_note">#F11A0A</color>
+    <color name="bg_present_note">#FFC107</color>
+    <color name="bg_future_note">#088A0D</color>
 
 </resources>
