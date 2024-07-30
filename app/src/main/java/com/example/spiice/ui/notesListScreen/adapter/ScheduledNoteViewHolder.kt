@@ -3,7 +3,7 @@ package com.example.spiice.ui.notesListScreen.adapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spiice.R
 import com.example.spiice.databinding.ScheduledNotesListItemBinding
-import com.example.spiice.entities.noteEntity.ScheduledNoteEntity
+import com.example.spiice.models.noteModel.ScheduledNote
 import com.example.spiice.utils.convertDataFromLocalDataToString
 import java.time.LocalDate
 
@@ -12,9 +12,9 @@ class ScheduledNoteViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(
-        note: ScheduledNoteEntity,
+        note: ScheduledNote,
         localeData: LocalDate,
-        onClick: (note: ScheduledNoteEntity) -> Unit
+        onClick: (note: ScheduledNote) -> Unit
     ) = binding.run {
         when {
             note.scheduledData > localeData -> scheduledNotesListItem.setBackgroundResource(R.drawable.bg_future_note)

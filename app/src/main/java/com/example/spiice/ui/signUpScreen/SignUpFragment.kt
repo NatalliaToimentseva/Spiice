@@ -6,13 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.spiice.databinding.FragmentSignUpBinding
 import com.example.spiice.navigator.navigator
+import com.example.spiice.repositoty.SharedPreferencesRepository
 import com.example.spiice.ui.logInScreen.LogInFragment
+import com.example.spiice.ui.notesListScreen.NotesListFragment
 import com.example.spiice.utils.createSpanForView
 import com.example.spiice.utils.activateButton
 import com.example.spiice.utils.emailValidator
 import com.example.spiice.utils.fieldHandler
+import com.example.spiice.utils.makeToast
 import com.example.spiice.utils.nameValidator
 import com.example.spiice.utils.passwordValidator
 
@@ -23,6 +27,7 @@ class SignUpFragment : Fragment() {
     private var isValidEmail = false
     private var isValidPassword = false
     private var binding: FragmentSignUpBinding? = null
+    private val viewModel: SignUpViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +40,10 @@ class SignUpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.exceptions.observe(viewLifecycleOwner) { e ->
+            if (e != null) e.message?.let { makeToast(requireActivity(), it) }
+        }
 
         binding?.loginFromSignUpScreenButton?.let { createSpanForView(it) }
 
@@ -97,8 +106,20 @@ class SignUpFragment : Fragment() {
             }
         }
 
-        binding?.signUpButton?.setOnClickListener {
-            //TODO
+        binding?.apply {
+            signUpButton.setOnClickListener {
+                if (viewModel.createAccount(
+                        firstNameSignUpET.text.toString(),
+                        lastNameSignUpET.text.toString(),
+                        emailSignUpET.text.toString(),
+                        passwordSignUpET.text.toString()
+                    )
+                ) {
+                    if (SharedPreferencesRepository.isFirstLaunch()) SharedPreferencesRepository.setFirstLaunch()
+                    SharedPreferencesRepository.setEmail(emailSignUpET.text.toString())
+                    navigator().startFragment(NotesListFragment.getFragment(emailSignUpET.text.toString()))
+                }
+            }
         }
 
         binding?.loginFromSignUpScreenButton?.setOnClickListener {

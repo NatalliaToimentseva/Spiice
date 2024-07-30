@@ -2,13 +2,13 @@ package com.example.spiice.ui.addNoteScreen
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.spiice.repositoty.NotesRepository
+import com.example.spiice.repositoty.RepositoryProvider
 import com.example.spiice.utils.convertDataFromLocalDataToString
 import java.time.LocalDate
 
 class AddNoteViewModel : ViewModel() {
 
-    private val notesRepository = NotesRepository()
+    private val notesRepository = RepositoryProvider.getNotesRepository()
 
     private var _dataPickerVisibility = MutableLiveData(false)
     val dataPickerVisibility get() = _dataPickerVisibility
@@ -24,16 +24,17 @@ class AddNoteViewModel : ViewModel() {
         _dataPickerData.value = fieldData
     }
 
-    fun setSimpleNote(title: String, addedData: LocalDate, message: String) {
-        notesRepository.addSimpleNote(title, addedData, message)
+    fun setSimpleNote(userEmail: String, title: String, addedData: LocalDate, message: String) {
+        notesRepository.addSimpleNote(userEmail, title, addedData, message)
     }
 
     fun setScheduledNote(
+        userEmail: String,
         title: String,
         addedData: LocalDate,
         scheduledData: LocalDate,
         message: String
     ) {
-        notesRepository.addScheduledNote(title, addedData, scheduledData, message)
+        notesRepository.addScheduledNote(userEmail, title, addedData, scheduledData, message)
     }
 }

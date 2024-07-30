@@ -10,6 +10,8 @@ import androidx.fragment.app.viewModels
 import com.example.spiice.R
 import com.example.spiice.databinding.FragmentAddNoteBinding
 import com.example.spiice.navigator.navigator
+import com.example.spiice.repositoty.SharedPreferencesRepository
+import com.example.spiice.ui.notesListScreen.NotesListFragment
 import com.example.spiice.utils.convertDataFromLongToString
 import com.example.spiice.utils.convertDataFromStringToLocalData
 import com.example.spiice.utils.activateButton
@@ -50,9 +52,18 @@ class AddNoteFragment : Fragment() {
             binding?.noteStartDataAddScreen?.text = it
         }
 
+        val userEmail: String? = SharedPreferencesRepository.getEmail()
+
         binding?.addNoteScreenToolbar?.run {
             this.setNavigationOnClickListener {
-                navigator().goBack()
+                navigator().cancelFragment()
+                navigator().startFragment(userEmail?.let { email ->
+                    NotesListFragment.getFragment(
+                        email
+                    )
+                }
+                    ?: NotesListFragment())
+//                navigator().goBack()
             }
         }
 
@@ -117,6 +128,7 @@ class AddNoteFragment : Fragment() {
             addNoteButton.setOnClickListener {
                 if (checkBoxAddScreen.isChecked) {
                     viewModel.setScheduledNote(
+                        userEmail = userEmail ?: "",
                         title = noteTitleAddScreen.text.toString(),
                         addedData = LocalDate.now(),
                         scheduledData = convertDataFromStringToLocalData(noteStartDataAddScreen.text.toString()),
@@ -124,12 +136,20 @@ class AddNoteFragment : Fragment() {
                     )
                 } else {
                     viewModel.setSimpleNote(
+                        userEmail = userEmail ?: "",
                         title = noteTitleAddScreen.text.toString(),
                         addedData = LocalDate.now(),
                         message = noteDescriptionAddScreen.text.toString(),
                     )
                 }
-                navigator().goBack()
+                navigator().cancelFragment()
+                navigator().startFragment(userEmail?.let { email ->
+                    NotesListFragment.getFragment(
+                        email
+                    )
+                }
+                    ?: NotesListFragment())
+//                navigator().goBack()
             }
         }
     }

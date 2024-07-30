@@ -2,32 +2,23 @@ package com.example.spiice.ui.notesListScreen
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.spiice.entities.noteEntity.Note
-import com.example.spiice.localDB.InMemoryNotesList
-import com.example.spiice.localDB.Subscriber
-import com.example.spiice.repositoty.NotesRepository
+import com.example.spiice.models.noteModel.Note
+import com.example.spiice.repositoty.RepositoryProvider
 
-class NotesListViewModel : ViewModel(), Subscriber {
+class NotesListViewModel : ViewModel() {
 
     private var _notesList = MutableLiveData<List<Note>>()
     val notesList get() = _notesList
 
-    private val notesRepository = NotesRepository()
+    private var userEmail = MutableLiveData<String>()
 
-    init {
-        InMemoryNotesList.addSubscriber(this)
-    }
+    private val notesRepository = RepositoryProvider.getNotesRepository()
 
-    override fun onCleared() {
-        super.onCleared()
-        InMemoryNotesList.removeSubscriber(this)
-    }
-
-    override fun update() {
-        getNotesList()
+    fun addEmail(email: String) {
+        userEmail.value = email
     }
 
     fun getNotesList() {
-        _notesList.value = notesRepository.getListNotes()
+        _notesList.value = userEmail.value?.let { notesRepository.getListNotes(it) }
     }
 }
