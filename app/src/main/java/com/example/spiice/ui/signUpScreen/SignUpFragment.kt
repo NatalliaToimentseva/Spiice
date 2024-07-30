@@ -11,15 +11,19 @@ import com.example.spiice.databinding.FragmentSignUpBinding
 import com.example.spiice.navigator.navigator
 import com.example.spiice.repositoty.SharedPreferencesRepository
 import com.example.spiice.ui.logInScreen.LogInFragment
-import com.example.spiice.ui.notesListScreen.NotesListFragment
+import com.example.spiice.ui.navigationContainer.NavigationFragment
 import com.example.spiice.utils.createSpanForView
 import com.example.spiice.utils.activateButton
+import com.example.spiice.utils.clearFields
 import com.example.spiice.utils.emailValidator
 import com.example.spiice.utils.fieldHandler
 import com.example.spiice.utils.makeToast
 import com.example.spiice.utils.nameValidator
 import com.example.spiice.utils.passwordValidator
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SignUpFragment : Fragment() {
 
     private var isValidFirstName = false
@@ -28,6 +32,9 @@ class SignUpFragment : Fragment() {
     private var isValidPassword = false
     private var binding: FragmentSignUpBinding? = null
     private val viewModel: SignUpViewModel by viewModels()
+
+    @Inject
+    lateinit var sharedPreferencesRepository: SharedPreferencesRepository
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,7 +49,28 @@ class SignUpFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.exceptions.observe(viewLifecycleOwner) { e ->
-            if (e != null) e.message?.let { makeToast(requireActivity(), it) }
+            if (e != null) e.message?.let {
+                makeToast(requireActivity(), it)
+                viewModel.clearException()
+            }
+        }
+        viewModel.email.observe(viewLifecycleOwner) { emailData ->
+            emailData?.let { email ->
+                sharedPreferencesRepository.setEmail(email)
+                binding?.let { binding ->
+                    clearFields(
+                        binding.emailSignUpET,
+                        binding.firstNameSignUpET,
+                        binding.lastNameSignUpET,
+                        binding.passwordSignUpET
+                    )
+                }
+                navigator().startFragment(NavigationFragment())
+                viewModel.clearEmail()
+            }
+        }
+        viewModel.progressBarVisibility.observe(viewLifecycleOwner) {
+            binding?.progressBar?.visibility = if (it) View.VISIBLE else View.GONE
         }
 
         binding?.loginFromSignUpScreenButton?.let { createSpanForView(it) }
@@ -108,23 +136,27 @@ class SignUpFragment : Fragment() {
 
         binding?.apply {
             signUpButton.setOnClickListener {
-                if (viewModel.createAccount(
-                        firstNameSignUpET.text.toString(),
-                        lastNameSignUpET.text.toString(),
-                        emailSignUpET.text.toString(),
-                        passwordSignUpET.text.toString()
-                    )
-                ) {
-                    if (SharedPreferencesRepository.isFirstLaunch()) SharedPreferencesRepository.setFirstLaunch()
-                    SharedPreferencesRepository.setEmail(emailSignUpET.text.toString())
-                    navigator().startFragment(NotesListFragment.getFragment(emailSignUpET.text.toString()))
-                }
+                viewModel.createAccount(
+                    firstNameSignUpET.text.toString(),
+                    lastNameSignUpET.text.toString(),
+                    emailSignUpET.text.toString(),
+                    passwordSignUpET.text.toString()
+                )
+                if (sharedPreferencesRepository.isFirstLaunch()) sharedPreferencesRepository.setFirstLaunch()
             }
         }
 
-        binding?.loginFromSignUpScreenButton?.setOnClickListener {
-            navigator().cancelFragment()
-            navigator().startFragment(LogInFragment())
+        binding?.let { binding ->
+            binding.loginFromSignUpScreenButton.setOnClickListener {
+                navigator().cancelFragment()
+                navigator().startFragment(LogInFragment())
+                clearFields(
+                    binding.emailSignUpET,
+                    binding.firstNameSignUpET,
+                    binding.lastNameSignUpET,
+                    binding.passwordSignUpET
+                )
+            }
         }
     }
 }

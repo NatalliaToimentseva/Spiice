@@ -10,19 +10,26 @@ import androidx.fragment.app.viewModels
 import com.example.spiice.databinding.FragmentLogInBinding
 import com.example.spiice.navigator.navigator
 import com.example.spiice.repositoty.SharedPreferencesRepository
+import com.example.spiice.ui.navigationContainer.NavigationFragment
 import com.example.spiice.ui.signUpScreen.SignUpFragment
-import com.example.spiice.ui.notesListScreen.NotesListFragment
 import com.example.spiice.utils.activateButton
+import com.example.spiice.utils.clearFields
 import com.example.spiice.utils.emptyFieldValidation
 import com.example.spiice.utils.fieldHandler
 import com.example.spiice.utils.makeToast
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class LogInFragment : Fragment() {
 
     private var binding: FragmentLogInBinding? = null
     private var isEmailValid = false
     private var isPasswordValid = false
     private val viewModel: LogInViewModel by viewModels()
+
+    @Inject
+    lateinit var sharedPreferencesRepository: SharedPreferencesRepository
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,7 +44,26 @@ class LogInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.exceptions.observe(viewLifecycleOwner) { e ->
-            if (e != null) e.message?.let { makeToast(requireActivity(), it) }
+            if (e != null) e.message?.let {
+                makeToast(requireActivity(), it)
+                viewModel.clearException()
+            }
+        }
+        viewModel.email.observe(viewLifecycleOwner) { emailData ->
+            emailData?.let { email ->
+                sharedPreferencesRepository.setEmail(email)
+                navigator().startFragment(NavigationFragment())
+                binding?.let { binding ->
+                    clearFields(
+                        binding.emailLogET,
+                        binding.passwordLogET
+                    )
+                }
+                viewModel.clearEmail()
+            }
+        }
+        viewModel.progressBarVisibility.observe(viewLifecycleOwner) {
+            binding?.progressBar?.visibility = if (it) View.VISIBLE else View.GONE
         }
 
         binding?.run {
@@ -76,17 +102,20 @@ class LogInFragment : Fragment() {
                 viewModel.getEmail(
                     emailLogET.text.toString(),
                     passwordLogET.text.toString()
-                )?.let { email ->
-                    if (SharedPreferencesRepository.isFirstLaunch()) SharedPreferencesRepository.setFirstLaunch()
-                    SharedPreferencesRepository.setEmail(email)
-                    navigator().startFragment(NotesListFragment.getFragment(email))
-                }
+                )
+                if (sharedPreferencesRepository.isFirstLaunch()) sharedPreferencesRepository.setFirstLaunch()
             }
         }
 
-        binding?.singUpFromLoginScreenButton?.setOnClickListener {
-            navigator().cancelFragment()
-            navigator().startFragment(SignUpFragment())
+        binding?.let { binding ->
+            binding.singUpFromLoginScreenButton.setOnClickListener {
+                navigator().cancelFragment()
+                navigator().startFragment(SignUpFragment())
+                clearFields(
+                    binding.emailLogET,
+                    binding.passwordLogET
+                )
+            }
         }
     }
 }

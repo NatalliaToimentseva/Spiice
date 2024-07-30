@@ -13,6 +13,7 @@ import com.example.spiice.models.noteModel.ScheduledNote
 import java.time.LocalDate
 
 class NotesAdapter(
+    private val fragmentId: Int,
     private val onClick: (note: Note) -> Unit
 ) : ListAdapter<Note, ViewHolder>(NoteDiffUtil()) {
 
@@ -52,11 +53,11 @@ class NotesAdapter(
         val localDate = LocalDate.now()
         when (val item = getItem(position)) {
             is SimpleNote -> {
-                (holder as? SimpleNoteViewHolder)?.bind(item, onClick)
+                (holder as? SimpleNoteViewHolder)?.bind(item, fragmentId, onClick)
             }
 
             is ScheduledNote -> {
-                (holder as? ScheduledNoteViewHolder)?.bind(item, localDate, onClick)
+                (holder as? ScheduledNoteViewHolder)?.bind(item, localDate, fragmentId, onClick)
             }
         }
     }

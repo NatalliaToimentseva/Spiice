@@ -2,18 +2,26 @@ package com.example.spiice.roomDB.repository
 
 import com.example.spiice.models.noteModel.Note
 import com.example.spiice.repositoty.NotesRepository
-import com.example.spiice.roomDB.DataBaseProvider
+import com.example.spiice.roomDB.dao.NotesDao
 import com.example.spiice.roomDB.entities.NoteDbEntity
 import com.example.spiice.utils.toNoteList
 import java.time.LocalDate
+import javax.inject.Inject
 
-class NotesRoomDBRepository : NotesRepository {
-    override fun getListNotes(userEmail: String): List<Note> {
-        return DataBaseProvider.notesDao?.getNotes(userEmail)?.toNoteList() ?: arrayListOf()
+class NotesRoomDBRepository @Inject constructor(
+    private val notesDao: NotesDao
+) : NotesRepository {
+    override suspend fun getListNotes(userEmail: String): List<Note> {
+        return notesDao.getNotes(userEmail).toNoteList()
     }
 
-    override fun addSimpleNote(userEmail: String, title: String, addedData: LocalDate, message: String) {
-        DataBaseProvider.notesDao?.createNote(
+    override suspend fun addSimpleNote(
+        userEmail: String,
+        title: String,
+        addedData: LocalDate,
+        message: String
+    ) {
+        notesDao.createNote(
             NoteDbEntity(
                 id = 0,
                 userEmail = userEmail,
@@ -25,14 +33,14 @@ class NotesRoomDBRepository : NotesRepository {
         )
     }
 
-    override fun addScheduledNote(
+    override suspend fun addScheduledNote(
         userEmail: String,
         title: String,
         addedData: LocalDate,
         scheduledData: LocalDate,
         message: String
     ) {
-        DataBaseProvider.notesDao?.createNote(
+        notesDao.createNote(
             NoteDbEntity(
                 id = 0,
                 userEmail = userEmail,
@@ -42,5 +50,13 @@ class NotesRoomDBRepository : NotesRepository {
                 scheduledData = scheduledData
             )
         )
+    }
+
+    override suspend fun deleteAllNotes(userEmail: String) {
+        notesDao.deleteUserNotes(userEmail)
+    }
+
+    override suspend fun searchInNotes(query: String, email: String): List<Note> {
+        return notesDao.searchInNotes(query, email).toNoteList()
     }
 }

@@ -5,12 +5,14 @@ import androidx.core.content.contentValuesOf
 import androidx.room.RenameColumn
 import androidx.room.migration.AutoMigrationSpec
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.spiice.utils.securityUtils.DefaultSecurityUtilsImpl
+import com.example.spiice.utils.securityUtils.SecurityUtils
+import javax.inject.Inject
 
 @RenameColumn(tableName = "Accounts", fromColumnName = "password", toColumnName = "hash")
 class AutoMigrationSpec1To2 : AutoMigrationSpec {
 
-    private val securityUtils = DefaultSecurityUtilsImpl()
+    @Inject
+    lateinit var securityUtils: SecurityUtils
 
     override fun onPostMigrate(db: SupportSQLiteDatabase) {
         super.onPostMigrate(db)

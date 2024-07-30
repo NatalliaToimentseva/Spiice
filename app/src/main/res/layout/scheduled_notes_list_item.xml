@@ -5,7 +5,9 @@
     android:id="@+id/scheduled_notes_list_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/recycleView_item_padding">
+    android:layout_margin="@dimen/dm_10"
+    android:paddingHorizontal="@dimen/dm_30"
+    android:paddingVertical="@dimen/dm_10">
 
     <TextView
         android:id="@+id/note_title"

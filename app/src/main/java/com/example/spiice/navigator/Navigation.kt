@@ -8,9 +8,15 @@ interface Navigation {
 
     fun addFragment(fragment: Fragment)
 
+    fun replaceFragment(fragment: Fragment)
+
     fun cancelFragment()
 
     fun goBack()
+
+    fun goToStart()
+
+    fun logout()
 }
 
 fun Fragment.navigator(): Navigation {

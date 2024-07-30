@@ -15,25 +15,14 @@
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/dm_20">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/add_note_screen_toolbar"
-            style="@style/ToolbarStyle"
-            android:background="@color/notes_background"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@drawable/add_note_screen_back"
-            app:title="@string/add_note_toolbar_title" />
 
         <TextView
             android:id="@+id/title_add_note"
             style="@style/AddNoteTitleStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/add_note_title_title_marginStart"
-            android:layout_marginTop="@dimen/add_note_title_title_marginTop"
+            android:layout_marginStart="@dimen/dm_110"
+            android:layout_marginTop="@dimen/dm_30"
             android:text="@string/add_note_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -91,6 +80,7 @@
             style="@style/CheckBoxStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dm_110"
             android:text="@string/add_note_checkbox"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/note_description_layout_add_screen" />
@@ -117,6 +107,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/note_description_layout_add_screen" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
