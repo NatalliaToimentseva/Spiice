@@ -12,18 +12,13 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class NoteRepositoryModule {
+abstract class RepositoryModule {
 
     @Binds
     @Singleton
     abstract fun bindNoteRepository(
         notesRepository: NotesRoomDBRepository
     ): NotesRepository
-}
-
-@Module
-@InstallIn(SingletonComponent::class)
-abstract class AccountRepositoryModule {
 
     @Binds
     @Singleton

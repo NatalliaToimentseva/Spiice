@@ -11,7 +11,7 @@ sealed class Note : Parcelable
 data class SimpleNote(
     val id: Long,
     val title: String,
-    val addedData: LocalDate,
+    val addedDate: LocalDate,
     val message: String,
 ) : Note()
 
@@ -19,7 +19,7 @@ data class SimpleNote(
 data class ScheduledNote(
     val id: Long,
     val title: String,
-    val addedData: LocalDate,
-    val scheduledData: LocalDate,
+    val addedDate: LocalDate,
+    val scheduledDate: LocalDate,
     val message: String,
 ) : Note()

@@ -14,14 +14,14 @@ fun NoteDbEntity.toNote(): Note {
             id = id,
             title = title,
             message = message,
-            addedData = addedData,
-            scheduledData = scheduledData
+            addedDate = addedData,
+            scheduledDate = scheduledData
         )
     } else SimpleNote(
         id = id,
         title = title,
         message = message,
-        addedData = addedData,
+        addedDate = addedData,
     )
 }
 

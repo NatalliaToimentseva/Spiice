@@ -24,7 +24,7 @@ class SimpleNoteViewHolder(
         noteTitle.setOnClickListener {
             onClick(note)
         }
-        noteAddedData.text = convertDataFromLocalDataToString(note.addedData)
+        noteAddedData.text = convertDataFromLocalDataToString(note.addedDate)
         noteMessage.text = note.message
         noteMessage.setOnClickListener {
             val tv = noteMessage
