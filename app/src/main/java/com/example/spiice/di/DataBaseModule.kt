@@ -12,6 +12,8 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+private const val DATA_BASE_NAME = "app_data_base"
+
 @Module
 @InstallIn(SingletonComponent::class)
 object DataBaseModule {
@@ -19,7 +21,7 @@ object DataBaseModule {
     @Provides
     @Singleton
     fun provideRoomDB(@ApplicationContext context: Context): AppDatabase {
-        return Room.databaseBuilder(context, AppDatabase::class.java, "app_data_base")
+        return Room.databaseBuilder(context, AppDatabase::class.java, DATA_BASE_NAME)
             .build()
     }
 

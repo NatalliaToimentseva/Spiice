@@ -26,7 +26,7 @@ class SharedPreferencesRepository @Inject constructor(
     }
 
     fun isFirstLaunch(): Boolean {
-        return preferences.getBoolean(IS_FIRST_LAUNCH, true) ?: true
+        return preferences.getBoolean(IS_FIRST_LAUNCH, true)
     }
 
     fun setFirstLaunch() {

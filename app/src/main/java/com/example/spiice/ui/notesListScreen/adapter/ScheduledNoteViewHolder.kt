@@ -20,21 +20,21 @@ class ScheduledNoteViewHolder(
     ) = binding.run {
         if (fragmentId == R.id.notes_list) {
             when {
-                note.scheduledData > localeData -> noteScheduledData.setTextColor(
+                note.scheduledDate > localeData -> noteScheduledData.setTextColor(
                     ContextCompat.getColor(
                         binding.root.context,
                         R.color.bg_future_note
                     )
                 )
 
-                note.scheduledData == localeData -> noteScheduledData.setTextColor(
+                note.scheduledDate == localeData -> noteScheduledData.setTextColor(
                     ContextCompat.getColor(
                         binding.root.context,
                         R.color.bg_present_note
                     )
                 )
 
-                note.scheduledData < localeData -> noteScheduledData.setTextColor(
+                note.scheduledDate < localeData -> noteScheduledData.setTextColor(
                     ContextCompat.getColor(
                         binding.root.context,
                         R.color.bg_past_note
@@ -48,8 +48,8 @@ class ScheduledNoteViewHolder(
         noteTitle.setOnClickListener {
             onClick(note)
         }
-        noteAddedData.text = convertDataFromLocalDataToString(note.addedData)
-        noteScheduledData.text = convertDataFromLocalDataToString(note.scheduledData)
+        noteAddedData.text = convertDataFromLocalDataToString(note.addedDate)
+        noteScheduledData.text = convertDataFromLocalDataToString(note.scheduledDate)
         noteMessage.text = note.message
         noteMessage.setOnClickListener {
             val tv = noteMessage

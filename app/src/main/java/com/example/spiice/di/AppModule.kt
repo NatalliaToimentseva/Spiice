@@ -10,11 +10,11 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class SecurityUtilsModule {
+abstract class AppModule {
 
     @Binds
     @Singleton
-    abstract fun bindSecurityUtils (
+    abstract fun bindSecurityUtils(
         securityUtilsImpl: DefaultSecurityUtilsImpl
     ): SecurityUtils
 }
