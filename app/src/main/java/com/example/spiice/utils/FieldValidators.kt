@@ -11,6 +11,7 @@ const val MAX_NAME_LENGTH = 255
 const val MIN_PASSWORD_LENGTH = 6
 const val MAX_PASSWORD_LENGTH = 50
 const val PASSWORD_PATTERN = "(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*"
+const val EMPTY = ""
 
 fun nameValidator(name: String): Boolean {
     return name.isNotBlank()
@@ -69,6 +70,6 @@ fun activateButton(vararg screenFields: Boolean): Boolean {
 
 fun clearFields(vararg view: EditText) {
     for (field in view) {
-        field.setText("")
+        field.setText(EMPTY)
     }
 }
