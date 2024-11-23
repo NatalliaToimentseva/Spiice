@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("kotlin-parcelize")
-    id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp") version "1.9.10-1.0.13"
 }
 
@@ -61,15 +60,14 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.androidx.viewpager2)
     implementation (libs.circleindicator)
-    implementation (libs.circleindicator.v132)
     implementation(libs.androidx.fragment.ktx)
 
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
 
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.android.compiler)
+    implementation(libs.dagger)
+    ksp(libs.dagger.compiler)
 
     implementation(libs.kotlinx.coroutines.android)
 }

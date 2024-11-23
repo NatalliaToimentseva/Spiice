@@ -1,5 +1,6 @@
 package com.example.spiice.ui.addNoteScreen
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,37 +8,45 @@ import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.spiice.App
 import com.example.spiice.R
 import com.example.spiice.databinding.FragmentAddNoteBinding
+import com.example.spiice.di.ViewModelsProvider
 import com.example.spiice.repositoty.SharedPreferencesRepository
-import com.example.spiice.utils.convertDataFromLongToString
-import com.example.spiice.utils.convertDataFromStringToLocalData
 import com.example.spiice.utils.activateButton
 import com.example.spiice.utils.clearFields
 import com.example.spiice.utils.convertDataFromLocalDataToString
+import com.example.spiice.utils.convertDataFromLongToString
+import com.example.spiice.utils.convertDataFromStringToLocalData
 import com.example.spiice.utils.emptyFieldValidation
 import com.example.spiice.utils.fieldHandler
 import com.example.spiice.utils.makeToast
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
-import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDate
 import javax.inject.Inject
 
 const val TAG = "tag"
 
-@AndroidEntryPoint
 class AddNoteFragment : Fragment() {
-
-    private var binding: FragmentAddNoteBinding? = null
-    private val viewModel: AddNoteViewModel by viewModels()
 
     @Inject
     lateinit var sharedPreferencesRepository: SharedPreferencesRepository
 
+    @Inject
+    lateinit var viewModelsProvider: ViewModelsProvider
+
+    private val viewModel: AddNoteViewModel by viewModels { viewModelsProvider }
+
+    private var binding: FragmentAddNoteBinding? = null
     private var isTitleValid = false
     private var isMessageValid = false
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        App.appComponent?.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

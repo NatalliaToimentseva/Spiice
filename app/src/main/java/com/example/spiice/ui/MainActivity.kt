@@ -4,17 +4,16 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.example.spiice.App
 import com.example.spiice.R
 import com.example.spiice.databinding.ActivityMainBinding
-import com.example.spiice.ui.splashScreen.SplashFragment
 import com.example.spiice.navigator.Navigation
 import com.example.spiice.repositoty.SharedPreferencesRepository
 import com.example.spiice.ui.logInScreen.LogInFragment
 import com.example.spiice.ui.navigationContainer.NavigationFragment
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.spiice.ui.splashScreen.SplashFragment
 import javax.inject.Inject
 
-@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), Navigation {
 
     private var binding: ActivityMainBinding? = null
@@ -26,6 +25,8 @@ class MainActivity : AppCompatActivity(), Navigation {
         binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding?.root)
+
+        App.appComponent?.inject(this)
 
         if (savedInstanceState == null) {
             replaceFragment(chooseStartFragment())

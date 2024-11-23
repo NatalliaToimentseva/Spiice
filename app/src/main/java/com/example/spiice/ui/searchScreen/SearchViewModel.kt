@@ -5,13 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.spiice.models.noteModel.Note
 import com.example.spiice.repositoty.NotesRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class SearchViewModel @Inject constructor(
+class SearchViewModel(
     private val notesRepository: NotesRepository,
 ) : ViewModel() {
 
@@ -19,7 +16,7 @@ class SearchViewModel @Inject constructor(
     val searchNoteList get() = _searchNoteList
 
     fun getSearchNotes(query: String, email: String) {
-        if(query.isNotBlank()) {
+        if (query.isNotBlank()) {
             viewModelScope.launch(Dispatchers.IO) {
                 _searchNoteList.postValue(notesRepository.searchInNotes(query, email))
             }

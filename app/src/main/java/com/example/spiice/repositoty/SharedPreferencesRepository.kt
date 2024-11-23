@@ -3,7 +3,6 @@ package com.example.spiice.repositoty
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.core.content.edit
-import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -13,9 +12,7 @@ private const val IS_FIRST_LAUNCH = "isFirstLaunch"
 private const val EMAIL = "email"
 
 @Singleton
-class SharedPreferencesRepository @Inject constructor(
-    @ApplicationContext context: Context
-) {
+class SharedPreferencesRepository @Inject constructor(context: Context) {
 
     private val preferences: SharedPreferences
     private val userPreferences: SharedPreferences

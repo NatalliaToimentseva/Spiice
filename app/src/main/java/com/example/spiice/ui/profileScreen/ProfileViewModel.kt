@@ -6,18 +6,15 @@ import androidx.lifecycle.viewModelScope
 import com.example.spiice.repositoty.AccountRepository
 import com.example.spiice.repositoty.NotesRepository
 import com.example.spiice.roomDB.entities.UserTuple
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 private const val EMPTY_NOTE = 0
 
-@HiltViewModel
-class ProfileViewModel @Inject constructor(
+class ProfileViewModel(
     private val notesRepository: NotesRepository,
     private val accountRepository: AccountRepository
-): ViewModel() {
+) : ViewModel() {
 
     private var _isDeleted = MutableLiveData(false)
     val isDeleted get() = _isDeleted

@@ -11,6 +11,7 @@ import javax.inject.Inject
 class NotesRoomDBRepository @Inject constructor(
     private val notesDao: NotesDao
 ) : NotesRepository {
+
     override suspend fun getListNotes(userEmail: String): List<Note> {
         return notesDao.getNotes(userEmail).toNoteList()
     }

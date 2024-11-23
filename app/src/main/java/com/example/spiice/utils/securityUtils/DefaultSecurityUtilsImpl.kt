@@ -6,7 +6,9 @@ import javax.crypto.SecretKeyFactory
 import javax.crypto.spec.PBEKeySpec
 import javax.inject.Inject
 
-class DefaultSecurityUtilsImpl @Inject constructor(): SecurityUtils {
+private const val ALGORITHM = "PBKDF2withHmacSHA1"
+
+class DefaultSecurityUtilsImpl @Inject constructor() : SecurityUtils {
 
     private val secureRandom = SecureRandom()
 
@@ -20,7 +22,7 @@ class DefaultSecurityUtilsImpl @Inject constructor(): SecurityUtils {
         val iterations = 1000
         val keyLength = 160
         val keySpec = PBEKeySpec(password, salt, iterations, keyLength)
-        val keyFactory = SecretKeyFactory.getInstance("PBKDF2withHmacSHA1")
+        val keyFactory = SecretKeyFactory.getInstance(ALGORITHM)
         return keyFactory.generateSecret(keySpec).encoded
     }
 

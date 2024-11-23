@@ -5,16 +5,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.spiice.repositoty.NotesRepository
 import com.example.spiice.utils.convertDataFromLocalDataToString
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.LocalDate
-import javax.inject.Inject
 
-@HiltViewModel
-class AddNoteViewModel @Inject constructor (
+class AddNoteViewModel (
     private val notesRepository: NotesRepository
-): ViewModel() {
+) : ViewModel() {
 
     private var _dataPickerVisibility = MutableLiveData(false)
     val dataPickerVisibility get() = _dataPickerVisibility

@@ -1,5 +1,6 @@
 package com.example.spiice.ui.logInScreen
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +8,9 @@ import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.spiice.App
 import com.example.spiice.databinding.FragmentLogInBinding
+import com.example.spiice.di.ViewModelsProvider
 import com.example.spiice.navigator.navigator
 import com.example.spiice.repositoty.SharedPreferencesRepository
 import com.example.spiice.ui.navigationContainer.NavigationFragment
@@ -17,19 +20,26 @@ import com.example.spiice.utils.clearFields
 import com.example.spiice.utils.emptyFieldValidation
 import com.example.spiice.utils.fieldHandler
 import com.example.spiice.utils.makeToast
-import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-@AndroidEntryPoint
 class LogInFragment : Fragment() {
+
+    @Inject
+    lateinit var sharedPreferencesRepository: SharedPreferencesRepository
+
+    @Inject
+    lateinit var viewModelsProvider: ViewModelsProvider
+
+    private val viewModel: LogInViewModel by viewModels { viewModelsProvider }
 
     private var binding: FragmentLogInBinding? = null
     private var isEmailValid = false
     private var isPasswordValid = false
-    private val viewModel: LogInViewModel by viewModels()
 
-    @Inject
-    lateinit var sharedPreferencesRepository: SharedPreferencesRepository
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        App.appComponent?.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

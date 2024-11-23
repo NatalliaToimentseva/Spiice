@@ -1,5 +1,6 @@
 package com.example.spiice.ui.signUpScreen
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,34 +8,43 @@ import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.spiice.App
 import com.example.spiice.databinding.FragmentSignUpBinding
+import com.example.spiice.di.ViewModelsProvider
 import com.example.spiice.navigator.navigator
 import com.example.spiice.repositoty.SharedPreferencesRepository
 import com.example.spiice.ui.logInScreen.LogInFragment
 import com.example.spiice.ui.navigationContainer.NavigationFragment
-import com.example.spiice.utils.createSpanForView
 import com.example.spiice.utils.activateButton
 import com.example.spiice.utils.clearFields
+import com.example.spiice.utils.createSpanForView
 import com.example.spiice.utils.emailValidator
 import com.example.spiice.utils.fieldHandler
 import com.example.spiice.utils.makeToast
 import com.example.spiice.utils.nameValidator
 import com.example.spiice.utils.passwordValidator
-import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-@AndroidEntryPoint
 class SignUpFragment : Fragment() {
+
+    @Inject
+    lateinit var sharedPreferencesRepository: SharedPreferencesRepository
+
+    @Inject
+    lateinit var viewModelsProvider: ViewModelsProvider
+
+    private val viewModel: SignUpViewModel by viewModels { viewModelsProvider }
 
     private var isValidFirstName = false
     private var isValidLastName = false
     private var isValidEmail = false
     private var isValidPassword = false
     private var binding: FragmentSignUpBinding? = null
-    private val viewModel: SignUpViewModel by viewModels()
 
-    @Inject
-    lateinit var sharedPreferencesRepository: SharedPreferencesRepository
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        App.appComponent?.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -1,10 +1,12 @@
 package com.example.spiice.ui.navigationContainer
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.spiice.App
 import com.example.spiice.R
 import com.example.spiice.databinding.FragmentNavigationContainerBinding
 import com.example.spiice.repositoty.SharedPreferencesRepository
@@ -12,16 +14,13 @@ import com.example.spiice.ui.addNoteScreen.AddNoteFragment
 import com.example.spiice.ui.notesListScreen.NotesListFragment
 import com.example.spiice.ui.profileScreen.ProfileFragment
 import com.example.spiice.ui.searchScreen.SearchFragment
-import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-@AndroidEntryPoint
 class NavigationFragment : Fragment() {
-
-    private var binding: FragmentNavigationContainerBinding? = null
 
     @Inject
     lateinit var sharedPreferencesRepository: SharedPreferencesRepository
+    private var binding: FragmentNavigationContainerBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,6 +29,11 @@ class NavigationFragment : Fragment() {
     ): View? {
         binding = FragmentNavigationContainerBinding.inflate(inflater, container, false)
         return binding?.root
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        App.appComponent?.inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

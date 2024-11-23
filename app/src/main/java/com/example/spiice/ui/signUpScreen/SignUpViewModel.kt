@@ -7,13 +7,10 @@ import com.example.spiice.models.accountModel.SignUpAccountData
 import com.example.spiice.repositoty.AccountRepository
 import com.example.spiice.roomDB.AccountAlreadyExistException
 import com.example.spiice.roomDB.AppExceptions
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class SignUpViewModel @Inject constructor(
+class SignUpViewModel(
     private val accountRepository: AccountRepository
 ) : ViewModel() {
 

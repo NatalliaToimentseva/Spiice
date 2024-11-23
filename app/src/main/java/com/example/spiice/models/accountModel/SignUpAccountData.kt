@@ -1,6 +1,6 @@
 package com.example.spiice.models.accountModel
 
-data class SignUpAccountData(
+class SignUpAccountData(
     val name: String,
     val surname: String,
     val email: String,
