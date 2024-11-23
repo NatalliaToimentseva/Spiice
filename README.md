@@ -19,7 +19,7 @@ It's notes app with authorization into local DB.<br />
 * SearchView<br />
 * ViewPager2<br />
 * CircleIndicator<br />
-* DataPicker<br />
+* DatePicker<br />
 * Span<br />
 
 ## 1. Navigation
